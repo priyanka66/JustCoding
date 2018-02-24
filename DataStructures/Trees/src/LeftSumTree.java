@@ -27,6 +27,7 @@ public class LeftSumTree {
         System.out.println("Inorder traversal of  tree ");
         b1.printInorder(t1.root);
 
+
         s1.LeftSumBinaryTree(t1.root);
         System.out.println("\n Inorder traversal of sum tree ");
         b1.printInorder(t1.root);
