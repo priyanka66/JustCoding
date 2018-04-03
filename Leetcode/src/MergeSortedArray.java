@@ -3,49 +3,37 @@ import java.util.Arrays;
 
 public class MergeSortedArray {
 
-    static void mergeSortedArrays(int[] num1, int m , int[] num2, int n){
-        if (m == 0) {
-            num1 = num2;
-            System.out.println(Arrays.toString(num1));
-            return;
-        }
-        if (n == 0) {
-            System.out.println(Arrays.toString(num1));
-            return ;
-        }
-        int index = m+n-1, i=m-1,j=n-1;
-        while (i>=0 &&  j>=0) {
-            if (num1[i] > num2[j]) {
-                num1[index--] = num1[i--];
-            } else {
-                num1[index--] = num2[j--];
+    static void mergeSortedArrays(int[] nums1, int m , int[] nums2, int n){
+        int k = m;
+        int l = n;
+        while(m>0 && n>0){
+            if(nums1[m-1]>nums2[n-1]){
+                nums1[m+n-1] = nums1[m-1];
+                m--;
+            }else{
+                nums1[m+n-1] = nums2[n-1];
+                n--;
             }
         }
-        if (i==0) {
-            while (j>0) {
-                num1[index--] = num2[j--];
-            }
-        } else if (j == 0) {
-            while (i>0) {
-                num1[index--] = num1[i--];
-            }
+
+        while(n>0){
+            nums1[m+n-1] = nums2[n-1];
+            n--;
         }
-        System.out.println(Arrays.toString(num1));
-        return;
+
+        for(int j=0;j<k+l;j++){
+            System.out.println(nums1[j]);
+        }
 
     }
     public static void main(String[] args) {
-        int m = 0;
+        int m = 1;
         int n = 1;
-        int[] num3 = new int[]{0};
-        int[] num2 = {1};
+        int[] num3 = new int[]{1,0};
+        int[] num2 = {2};
         int[] num1 = Arrays.copyOf(num3, 1);
         int[] num4 = num1;
-//        System.out.println(Arrays.toString(num4));
-//        num1 = num2;
-//        System.out.println(Arrays.toString(num1));
-//        System.out.println(Arrays.toString(num2));
-
+//       
         mergeSortedArrays(num1, m, num2, n);
 //        System.out.println(Arrays.toString(result));
 
