@@ -9,14 +9,15 @@ public class LevelOrder {
 
 
     void levelOrder(Node root) {
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            Node temp = queue.poll();
-            System.out.print(temp.data + " ");
-            if(temp.left != null) queue.add(temp.left);
-            if (temp.right != null) queue.add(temp.right);
-        }
+        if (root == null) return ;
+       Queue<Node> q = new LinkedList<>();
+       q.add(root);
+       while (!q.isEmpty()) {
+           root =  q.poll();
+           System.out.println(root.data);
+           if(root.left!=null) q.add(root.left);
+           if (root.right != null) q.add(root.right);
+       }
     }
 
     void  reverselevelOrder(Node root) {

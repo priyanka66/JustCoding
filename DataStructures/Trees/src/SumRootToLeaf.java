@@ -1,21 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class SumRootToLeaf {
 
-        static boolean hasSumPath(Node node, int sum) {
-            if (node == null) {
-                return sum == 0;
-            } else {
-                boolean hasPath = false;
-                int nodeSum = sum - node.data;
-                if (nodeSum == 0 && node.left == null && node.right == null) return true;
-                if (node.left != null) return hasPath || hasSumPath(node.left, nodeSum);
-                if (node.right != null) return hasPath || hasSumPath(node.right, nodeSum);
+        static boolean hasSumPath(Node root, int sum, List<Integer> result) {
+            if (root == null) return false;
+            if (root.left == null && root.right == null) {
+                if (root.data == sum) return true;
+                else return false;
             }
-            return  false;
+
+            if(hasSumPath(root.left, sum-root.data, result)) {
+                result.add(root.data);
+                return true;
+            }
+            if(hasSumPath(root.right, sum-root.data, result)){
+                result.add(root.data);
+                return true;
+            }
+
+            return false;
 
         }
         public static void main(String[] args) {
             int sum = 21;
             BinaryTree t1 = new BinaryTree();
+            List<Integer> result = new ArrayList<>();
             t1.root = new Node(10);
             t1.root.left = new Node(8);
             t1.root.right = new Node(2);
@@ -24,7 +34,7 @@ public class SumRootToLeaf {
             t1.root.right.right = new Node(4);
 
 
-            if(hasSumPath(t1.root, sum)) System.out.println("Has Path");
+            if(hasSumPath(t1.root, sum, result)) System.out.println("Has Path");
             else System.out.println("NoPath");
 
         }

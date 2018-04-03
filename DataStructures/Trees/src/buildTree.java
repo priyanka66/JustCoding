@@ -57,8 +57,8 @@ public class buildTree {
     public static void main(String[] args) {
         BinaryTree t1 = new BinaryTree();
         buildTree b1 = new buildTree();
-        int[] in = {4,2,5,1,3,6};
-        int[] pre = {1,2,4,5,3,6};
+        int[] in = {-1};
+        int[] pre = {-1};
         int[] post = {4,5,2,6,3,1};
 
 
@@ -69,8 +69,8 @@ public class buildTree {
         b1.printInorder(tree1);
 
 
-        System.out.println("Inorder traversal of  tree constructed from level and pre order traversals : ");
-        Node tree2 = b1.buildUsingPrePost(pre, post, 0, len - 1, len);
-        b1.printInorder(tree2);
+//        System.out.println("Inorder traversal of  tree constructed from level and pre order traversals : ");
+//        Node tree2 = b1.buildUsingPrePost(pre, post, 0, len - 1, len);
+//        b1.printInorder(tree2);
     }
 }

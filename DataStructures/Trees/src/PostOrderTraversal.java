@@ -33,42 +33,48 @@ public class PostOrderTraversal {
         postOrder(root);
     }
 
-    ArrayList<Integer> postOrderIterative() {
-        Stack<Node> st =  new Stack<>();
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        Node current, prev;
-        current = root;
-        if (root == null) return result;
-        st.push(root);
-        prev = null;
-        while (!st.isEmpty()) {
-            current = st.peek();
-            if(prev == null || prev.left == current || prev.right == current) {
-                if (current.left != null) {
-                    st.push(current.left);
-                } else if (current.right != null) {
-                    st.push(current.right);
-                } else {
-                    st.pop();
-                    result.add(current.data);
-                }
-            } else if (current.left == prev) {
-                if (current.right != null) {
-                    st.push(current.right);
-                } else {
-                    st.pop();
-                    result.add(current.data);
-                }
-            } else if (current.right == prev) {
-                st.pop();
-                result.add(current.data);
-            }
-
-            prev = current;
-
+    void postOrderIterative(Node root) {
+        if (root == null) return;
+        Stack<Node> s1 = new Stack<>();
+        Stack<Node> s2 = new Stack<>();
+        s1.push(root);
+        while (!s1.isEmpty()){
+            root = s1.pop();
+            s2.push(root);
+            if(root.left != null) s1.push(root.left);
+            if(root.right!=null) s1.push(root.right);
         }
+        while (!s2.isEmpty()) {
+            root = s2.pop();
+            System.out.println(root.data);
+        }
+    }
 
-        return result;
+    public static void postOrderIterativeV2(Node root) {
+        Node current = root;
+        Stack<Node> st = new Stack<>();
+        while (current != null || !st.isEmpty()) {
+            if(current != null) {
+                st.push(current);
+                current = current.left;
+            }
+            else {
+                Node temp = st.peek().right;
+                if (temp == null) {
+                    temp = st.pop();
+                    System.out.println(temp.data);
+                    while (!st.isEmpty() && temp == st.peek().right) {
+                        temp = st.pop();
+                        System.out.println(temp.data);
+                    }
+                }
+
+
+                else {
+                    current = temp;
+                }
+            }
+        }
     }
     public static void main(String[] args) {
         PostOrderTraversal t1 = new PostOrderTraversal();
@@ -81,14 +87,14 @@ public class PostOrderTraversal {
         t1.root.right.right = new Node(7);
 
 
-        System.out.println("\nPost Order Traversal");
+        System.out.println("\nPost Order Traversal ");
         t1.postOrder();
 
-        System.out.println("\nIterative Post Order Traversal");
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        list = t1.postOrderIterative();
-        System.out.print(list);
+        System.out.println("\nIterative Post Order Traversal- 2 stacks\"");
+        t1.postOrderIterative(t1.root);
 
+        System.out.println("\nPost Order Traversal with one stack");
+        t1.postOrderIterativeV2(t1.root);
 
     }
 }
