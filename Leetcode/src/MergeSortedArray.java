@@ -21,10 +21,6 @@ public class MergeSortedArray {
             n--;
         }
 
-        for(int j=0;j<k+l;j++){
-            System.out.println(nums1[j]);
-        }
-
     }
     public static void main(String[] args) {
         int m = 1;

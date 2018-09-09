@@ -1,15 +1,26 @@
 public class LongestCommonPrefix {
-    public static void main(String[] args){
-        String[] temp = {"leet","leetcode","lee"};
-        String s = temp[0];
-        for(int i=1; i<temp.length;i++){
-            while(temp[i].indexOf(s)!=0){
+
+    public String longestCommonPrefix(String[] strs) {
+
+        if (strs.length == 0) return "";
+        String s = strs[0];
+
+        for (int i=1; i<strs.length;i++) {
+            while (strs[i].indexOf(s) != 0){
                 s = s.substring(0,s.length()-1);
-                if(s.isEmpty()){
-                    System.out.println("");
-                }
+                System.out.println(s);
+                if (s.isEmpty()) return "";
             }
+
         }
-        System.out.println(s);
+
+        return s;
+
+    }
+
+    public static void main(String[] args){
+        LongestCommonPrefix l = new LongestCommonPrefix();
+        String[] strs = {"flower","flow","flight"};
+        System.out.println(l.longestCommonPrefix(strs));
     }
 }

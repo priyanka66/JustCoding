@@ -1,13 +1,14 @@
 public class BuyAndSellV1 {
 
     public static int maxProfit(int[] prices) {
-        int minSell = Integer.MAX_VALUE;
         int maxProfit = 0;
-        for (int i=0;i<prices.length;i++) {
-            if (minSell > prices[i]) minSell = Math.min(minSell, prices[i]);
-            else maxProfit = Math.max(maxProfit, prices[i]-minSell);
+        int minBuy = Integer.MAX_VALUE;
+        for (int i = 0; i<prices.length-1;i++) {
+            if (minBuy > prices[i]) {
+                minBuy = prices[i];
+            }
+            maxProfit = Math.max(maxProfit, prices[i+1]-minBuy);
         }
-
         return maxProfit;
     }
     public static void main(String[] args) {

@@ -4,19 +4,25 @@ import java.util.Set;
 
 public class SingleNumber {
 
-    int singleNumber(int[] nums) {
-        Set<Integer> numberSet = new HashSet<Integer>();
-        for (int i : nums) {
-            if (!numberSet.add(i)) {
-                numberSet.remove(i);
-            }
+    private int singleNumber(int[] nums) {
+        int n = nums[0];
+        for (int i =1; i<nums.length;i++) {
+            n ^= nums[i];
         }
-        Iterator<Integer> intInter = numberSet.iterator();
-        return intInter.next();
+       return n;
+//        Set<Integer> set = new HashSet<Integer>();
+//        for (int i=0; i<nums.length; i++) {
+//            if(!set.add(nums[i])) set.remove(nums[i]);
+//        }
+//        Iterator <Integer> it = set.iterator();
+//        return it.next();
+
+
     }
-    public static void main(String[] args){
-        SingleNumber s1 = new SingleNumber();
-        int[] nums = {1,1,2,3,2};
-        System.out.println(s1.singleNumber(nums));
+
+    public static void main(String[] args) {
+        SingleNumber sn = new SingleNumber();
+        int[] nums = {4,1,2,1,2};
+        System.out.println(sn.singleNumber(nums));
     }
 }

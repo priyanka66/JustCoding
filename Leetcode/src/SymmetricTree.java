@@ -20,16 +20,14 @@ public class SymmetricTree {
 
     }
     static boolean isSymmetric(TreeNode root) {
-        SymmetricTree s1 = new SymmetricTree();
+        SymmetricTree s = new SymmetricTree();
         if (root == null) return true;
-
-        return s1.checkIfSymmetric(root.left, root.right);
+        return s.checkIfSymmetric(root.left, root.right);
     }
 
     public boolean checkIfSymmetric(TreeNode p, TreeNode q) {
         if (p == null || q == null) return p == q;
-        if (p.val != q.val) return false;
-        return checkIfSymmetric(p.left, q.right) && checkIfSymmetric(p.right, q.left);
+        return (p.val == q.val) && (checkIfSymmetric(p.left, q.right)) && (checkIfSymmetric(p.right, q.left));
     }
 
     static boolean isSymmetricIter(TreeNode root) {
