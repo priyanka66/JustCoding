@@ -27,13 +27,40 @@ public class ValidParenthesis {
             return true;
 
     }
+    public static boolean isValidV2(String s) {
+        int i = -1;
+        int j = 0;
+        char[] a = s.toCharArray();
+
+        while (j < s.length()) {
+            if (i == -1 || !match(a, i, j)) {
+                a[++i] = a[j++];
+            } else {
+                i--;
+                j++;
+            }
+        }
+
+        return i == -1;
+    }
+
+    static boolean match(char[] a, int i, int j) {
+        if ((a[i] == '(' && a[j] == ')')
+                || (a[i] == '{' && a[j] == '}')
+                || (a[i] == '[' && a[j] == ']')) {
+            return true;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
-        String s = "(";
+        String s = "([)]{}";
         if (isValidParenthesis(s)) {
             System.out.println("Is valid");
         } else {
             System.out.println("Not valid");
         }
+
+        System.out.println(isValidV2(s));
     }
 }

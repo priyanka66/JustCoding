@@ -19,10 +19,19 @@ public class SingleNumber {
 
 
     }
+    private  int singleNumberV2(int[] nums) {
+        Set<Integer> set = new HashSet<Integer>();
+        for (int i=0; i<nums.length; i++) {
+            if(!set.add(nums[i])) return nums[i];
+        }
+        Iterator<Integer> it = set.iterator();
+        return  it.next();
+    }
 
     public static void main(String[] args) {
         SingleNumber sn = new SingleNumber();
-        int[] nums = {4,1,2,1,2};
+        int[] nums = {2,2,1};
         System.out.println(sn.singleNumber(nums));
+        System.out.println(sn.singleNumberV2(nums));
     }
 }

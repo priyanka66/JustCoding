@@ -12,7 +12,7 @@ public class FactorialTrailingZeroes {
 
     public static void main(String[] args) {
         FactorialTrailingZeroes f = new FactorialTrailingZeroes();
-        int n = 14;
+        int n = 10;
         System.out.println(f.trailingZeroes(n));
     }
 }

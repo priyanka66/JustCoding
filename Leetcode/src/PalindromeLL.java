@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Stack;
 
 public class PalindromeLL {
@@ -29,6 +30,47 @@ public class PalindromeLL {
         return true;
     }
 
+    private boolean isPalindromeV2(ListNode head) {
+        if (head == null) return true;
+        int count = 0;
+        ListNode node = head;
+        while (node != null) {
+            count++;
+            node = node.next;
+        }
+
+        int mid = count/2;
+        if (count % 2 != 0) mid++;
+        count = 0;
+        ListNode head2 = head;
+        while (count != mid) {
+            head2 = head2.next;
+            count++;
+        }
+
+        ListNode rev = reverseLL(head2);
+        while (head != null && rev != null && head.val == rev.val) {
+            head = head.next;
+            rev = rev.next;
+        }
+
+        if (rev == null) return true;
+        return false;
+    }
+
+    private ListNode reverseLL(ListNode head) {
+        if (head == null) return null;
+        ListNode cur = head, prev=null, next;
+        while (cur != null) {
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+
+        head = prev;
+        return head;
+    }
     public static void main (String[] args) {
         PalindromeLL p = new PalindromeLL();
         ListNode head = new ListNode(1);
@@ -37,7 +79,15 @@ public class PalindromeLL {
         head.next.next.next = new ListNode(2);
         head.next.next.next.next = new ListNode(1);
 
-        System.out.println(p.isPalindrome(head));
+        ListNode node = head;
+
+//        System.out.println(p.isPalindrome(node));
+
+        System.out.println(p.isPalindromeV2(node));
+//        while (head != null) {
+//            System.out.println(head.val);
+//            head = head.next;
+//        }
 
     }
 }

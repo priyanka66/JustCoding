@@ -33,7 +33,7 @@ public class MajorityElement {
             }
             if (count == 0) {
                 majIndex = i;
-//                count = 1;
+                count = 1;
 
                 continue;
             }
@@ -44,7 +44,7 @@ public class MajorityElement {
 
     public static void main(String[] args) {
         MajorityElement m1 = new MajorityElement();
-        int nums[] = {2,2,2,3,3};
+        int nums[] = {2,3,2};
 //        System.out.println("MajorityElement " + m1.majorityElement(nums));
         System.out.println("MajorityElement " + m1.majorityElementByVoting(nums));
 

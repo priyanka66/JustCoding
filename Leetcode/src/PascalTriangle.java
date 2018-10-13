@@ -23,7 +23,7 @@ public class PascalTriangle {
         return (n * choose(n-1,k-1)/k);
     }
     public static void main(String[] args) {
-        int n = 6;
+        int n = 7;
         System.out.println(generate(n));
     }
 }

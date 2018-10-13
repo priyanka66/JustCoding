@@ -16,7 +16,7 @@ public class RemoveDuplicates {
         return count;
     }
     public static void main(String[] args) {
-        int[] nums = {};
+        int[] nums = {1,1,2};
         int result = removeDuplicate(nums);
         System.out.println("The new length " + result);
     }

@@ -1,39 +1,57 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MinStack {
-    List<Integer>st = new ArrayList<Integer>();
+    private Node head;
 
     public void push(int x) {
-        st.add(x);
+        if(head == null)
+            head = new Node(x, x);
+        else
+            head = new Node(x, Math.min(x, head.min), head);
     }
+
     public void pop() {
-        if (st.size() == 0) return;
-        st.remove(st.size() -1);
+        head = head.next;
     }
 
     public int top() {
-        if (st.size() == 0) return -1;
-        return st.get(st.size()-1);
+        return head.val;
     }
 
     public int getMin() {
-        if (st.size()== 0) return  -1;
-        return st.get(st.indexOf(Collections.min(st)));
+        return head.min;
+    }
+
+    private class Node {
+        int val;
+        int min;
+        Node next;
+
+        private Node(int val, int min) {
+            this(val, min, null);
+        }
+
+        private Node(int val, int min, Node next) {
+            this.val = val;
+            this.min = min;
+            this.next = next;
+        }
+
     }
 
     public static void main(String[] args) {
         MinStack st = new MinStack();
-        st.push(1);
         st.push(4);
+        st.push(5);
         st.push(3);
-        st.push(10);
+        st.push(2);
         System.out.println(st.top());
         st.pop();
         System.out.println(st.top());
-        System.out.println(st.getMin());
+        st.pop();
+        System.out.println(st.top());
+        st.pop();
+        System.out.println(st.top());
 
     }
 }

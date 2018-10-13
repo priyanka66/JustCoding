@@ -7,9 +7,26 @@ public class ReverseString {
       }
       return rev.toString();
   }
+
+  private String reverseV1(String s) {
+      int i=0,j=s.length()-1;
+      char str[] = s.toCharArray();
+      char temp ;
+      while (i<j) {
+          temp = str[i];
+          str[i] = str[j];
+          str[j] = temp;
+          i++;
+          j--;
+      }
+
+      return String.valueOf(str);
+  }
   public static void main(String[] args) {
     ReverseString revS = new ReverseString();
-    System.out.println(revS.reverse("hello hellohellohello hello hello hellohellohello hellohello hellohellohello hellohello hellohellohello hellohello hellohellohello hellohello hellohellohello hello "));
+    String s = "A man, a plan, a canal: Panama";
+    System.out.println(revS.reverse(s));
+    System.out.println(revS.reverseV1(s));
   }
 }
 

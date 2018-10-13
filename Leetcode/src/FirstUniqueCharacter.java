@@ -22,18 +22,18 @@ public class FirstUniqueCharacter {
     private int firstUniqCharV2(String s) {
         int[] uniq = new int[26];
         for(int i=0;i<s.length();i++) {
-            System.out.println(s.charAt(i)-'a');
             uniq[s.charAt(i)-'a']++;
         }
         for (int i=0;i<s.length();i++) {
            if(uniq[s.charAt(i)-'a'] == 1) return i;
         }
+
         return -1;
     }
     public static void main(String[] args) {
         FirstUniqueCharacter f = new FirstUniqueCharacter();
-        String s = "leetcode";
-//        System.out.println(f.firstUniqChar(s));
+        String s = "aadadaad";
+        System.out.println(f.firstUniqChar(s));
         System.out.println(f.firstUniqCharV2(s));
 
     }

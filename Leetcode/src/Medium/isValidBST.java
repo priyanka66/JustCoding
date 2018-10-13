@@ -31,13 +31,27 @@ public class isValidBST {
 
         return true;
     }
+
+    public boolean isValidBSTV2(TreeNode root) {
+        if (root ==  null) return true;
+        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    boolean isValidBST(TreeNode root, long min, long max) {
+        System.out.println(Long.MAX_VALUE);
+        if (root == null) return true;
+        if (root.val <= min || root.val >= max) return false;
+        return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
+
+    }
     public static void main(String[] args) {
         isValidBST b = new isValidBST();
-        TreeNode root = new TreeNode(5);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(4);
-        root.right.left = new TreeNode(13);
-        root.right.right = new TreeNode(6);
-        System.out.print(b.isValidBST(root));
+        TreeNode root = new TreeNode(2147483647);
+//        root.left = new TreeNode(1);
+//        root.right = new TreeNode(6);
+//        root.left.left = new TreeNode(1);
+//        root.left.right = new TreeNode(4);
+//        System.out.print(b.isValidBST(root));
+        System.out.print(b.isValidBSTV2(root));
     }
 }

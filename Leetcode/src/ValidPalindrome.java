@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class ValidPalindrome {
@@ -37,10 +39,30 @@ public class ValidPalindrome {
         }
         return true;
     }
+
+    static boolean isPalindromeV3(String s) {
+        char [] cs = s.trim().toLowerCase().toCharArray();
+        List<Character> csl = new ArrayList<>();
+        for (Character c : cs) {
+            if (Character.isLetterOrDigit(c)) {
+                csl.add(c);
+            }
+        }
+
+        int start = 0, end = csl.size()-1;
+        while (start<end) {
+            if (csl.get(start) != csl.get(end)) return false;
+            start++;
+            end--;
+        }
+        return true;
+    }
+
+
     public static void main (String[] args) {
         String s = "A man, a plan, a canal: Panama";
-        String s1 = "ana";
-        if (isPalindromeV1(s)) System.out.println("Valid");
+        String s1 = "ansa";
+        if (isPalindromeV3(s1)) System.out.println("Valid");
         else System.out.println("Not Valid");
     }
 }
