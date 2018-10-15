@@ -26,7 +26,7 @@ public class GenerateParentheses {
     }
     public static void main(String[] args) {
         GenerateParentheses g = new GenerateParentheses();
-        int n = 0;
+        int n = 2;
         System.out.println(g.generateParenthesis(n));
     }
 }

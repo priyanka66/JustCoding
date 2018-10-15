@@ -25,9 +25,8 @@ public class MergeIntervals {
         if (intervals.size() == 0) return result;
         Interval i1 = intervals.get(0);
         for (int i=1;i<intervals.size();i++) {
-            Interval i2 = intervals.get(i);
             if (intervals.get(i).start <= i1.end) {
-                i1.end = intervals.get(i).end > i1.end ? i1.end : intervals.get(i).end;
+                i1.end = intervals.get(i).end < i1.end ? i1.end : intervals.get(i).end;
             } else {
                 result.add(i1);
                 i1 = intervals.get(i);

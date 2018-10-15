@@ -18,12 +18,7 @@ public class Subsets {
         result.add(new ArrayList<>(temp));
         for (int i = start;i<nums.length;i++) {
             temp.add(nums[i]);
-            System.out.println("temp ---- " + temp);
             generateSubsets(result, temp, nums, i+1);
-
-            System.out.println("temp later ---- " + temp);
-
-
             temp.remove(temp.size()-1);
         }
     }

@@ -1,5 +1,8 @@
 package Medium;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class PopulatingNextRightNode {
 
     public static class TreeLinkNode {
@@ -9,6 +12,35 @@ public class PopulatingNextRightNode {
     }
 
     public void connect(TreeLinkNode root) {
+        if (root == null) return;
+        Queue<TreeLinkNode> q1 = new LinkedList<TreeLinkNode>();
+        Queue<TreeLinkNode> q2 = new LinkedList<TreeLinkNode>();
+        q1.add(root);
+        while (!q1.isEmpty() || !q2.isEmpty()) {
+            while (!q1.isEmpty()) {
+                TreeLinkNode node = q1.poll();
+                if (node.left != null) q2.add(node.left);
+                if(node.right != null) q2.add(node.right);
+                if (q1.isEmpty()) {
+                    node.next = null;
+                } else{
+                    node.next = q1.peek();
+                }
+            }
+
+            while (!q2.isEmpty()) {
+                TreeLinkNode node = q2.poll();
+                if (node.left != null) q1.add(node.left);
+                if(node.right != null) q1.add(node.right);
+                if (q2.isEmpty()) {
+                    node.next = null;
+                } else{
+                    node.next = q2.peek();
+                }
+            }
+        }
+
+        System.out.println(root);
 
     }
     public static void main(String[] args){
