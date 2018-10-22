@@ -17,6 +17,7 @@ public class SpiralMatrix {
         while (top<=bottom && left<=right) {
             // top to right
             if (dir == "TR") {
+                System.out.println("TR");
                 for (int i = top; i <= right; i++) {
                     result.add(matrix[top][i]);
                 }
@@ -25,6 +26,7 @@ public class SpiralMatrix {
                 dir = "TB";
             }
             else if (dir == "TB") {
+                System.out.println("TB");
                 for (int i = top; i <= bottom; i++) {
                     result.add(matrix[i][right]);
                 }
@@ -33,6 +35,7 @@ public class SpiralMatrix {
                 dir = "RL";
             }
             else if (dir == "RL") {
+                System.out.println("RL");
                 for (int i=right; i>=left; i--) {
                     result.add(matrix[bottom][i]);
                 }
@@ -42,6 +45,7 @@ public class SpiralMatrix {
             }
 
             else if (dir == "BT") {
+                System.out.println("BT");
                 for (int i=bottom;i>=top;i--) {
                     result.add(matrix[i][left]);
 

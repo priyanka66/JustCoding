@@ -19,11 +19,10 @@ public class PalindromePartioning {
             result.add(new ArrayList<>(temp));
             return;
         }
-
-        for (int i=k+1;i<=s.length();i++) {
+        for (int i=k+1; i<=s.length();i++){
             if (isPalindrome(s.substring(k,i))) {
                 temp.add(s.substring(k,i));
-                partition(s, result, temp, i);
+                partition(s, result, temp,i);
                 temp.remove(temp.size()-1);
             }
         }

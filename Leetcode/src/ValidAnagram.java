@@ -21,11 +21,7 @@ public class ValidAnagram {
         if (s == null && t == null) return true;
         HashMap<Character, Integer> anagram = new HashMap<Character, Integer>();
         for (int i=0;i<s.length();i++) {
-            if(!anagram.containsKey(s.charAt(i))) {
-                anagram.put(s.charAt(i),1);
-            } else {
-                anagram.put(s.charAt(i), anagram.get(s.charAt(i)) +1);
-            }
+            anagram.put(s.charAt(i), anagram.getOrDefault(s.charAt(i),0)+1);
         }
 
         for (int i=0; i<t.length();i++) {
@@ -45,7 +41,7 @@ public class ValidAnagram {
         String t = "nagaram";
         if(v1.isAnagram(s, t)) System.out.println("Valid Anagram");
         else System.out.println("Not a Valid Anagram");
-//        if(v1.isAnagramV2(s, t)) System.out.println("Valid Anagram");
-//        else System.out.println("Not a Valid Anagram");
+        if(v1.isAnagramV2(s, t)) System.out.println("Valid Anagram");
+        else System.out.println("Not a Valid Anagram");
     }
 }

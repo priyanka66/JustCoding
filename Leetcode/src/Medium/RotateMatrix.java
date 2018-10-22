@@ -14,12 +14,13 @@ public class RotateMatrix {
                 matrix[i][j] = matrix[j][i];
                 matrix[j][i]=temp;
             }
+
         }
 
         // Reverse elements of each row
         for (int i=0;i<matrix.length;i++) {
             int a=0,b=matrix.length-1;
-            while ((a<= matrix.length/2)  && (b >= matrix.length/2)) {
+            while (a<=b) {
                 int temp = matrix[i][a];
                 matrix[i][a] = matrix[i][b];
                 matrix[i][b] = temp;
@@ -40,7 +41,7 @@ public class RotateMatrix {
         // Reverse elements of each row
         for (int i=0;i<matrix.length;i++) {
             int a=0,b=matrix.length-1;
-            while ((a<= matrix.length/2)  && (b >= matrix.length/2)) {
+            while (a<=b) {
                 int temp = matrix[i][a];
                 matrix[i][a] = matrix[i][b];
                 matrix[i][b] = temp;

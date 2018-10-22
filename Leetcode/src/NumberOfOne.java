@@ -13,6 +13,10 @@ public class NumberOfOne {
 
         long un = Integer.toUnsignedLong(n);
         int c = 0;
+        /** if we subtract a number by 1 and do bitwise & with itself (n & (n-1)), we unset the rightmost set bit.
+         * If we do n & (n-1) in a loop and count the no of times loop executes we get the set bit count.
+         *
+          */
         while (un>0){
             un &= un - 1;
             c++;

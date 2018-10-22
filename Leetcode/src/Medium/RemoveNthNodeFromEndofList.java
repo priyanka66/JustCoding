@@ -5,23 +5,27 @@ import static Medium.OddEvenLinkedList.ListNode;
 public class RemoveNthNodeFromEndofList {
 
     private ListNode removeNthFromEnd(ListNode head, int n) {
-        if (head == null) return null;
-        ListNode cur = head, prev = head;
-        while (n>0) {
-            cur = cur.next;
-            n--;
-        }
-        if (cur == null) {
-            head = head.next;
-            return head;
-        }
-        while (cur.next !=null) {
-            cur = cur.next;
-            prev = prev.next;
-        }
 
-        prev.next = prev.next.next;
-        return head;
+    if (head == null) return null;
+    if (head.next == null && n==1) return null;
+    ListNode cur=head, prev=head;
+
+       while (n>0) {
+           cur = cur.next;
+           n--;
+       }
+
+       if (cur == null) {
+           head = head.next;
+           return head;
+       }
+       while (cur.next != null) {
+           cur = cur.next;
+           prev = prev.next;
+       }
+       prev.next = prev.next.next;
+
+       return head;
     }
 
     public static void main(String[] args) {

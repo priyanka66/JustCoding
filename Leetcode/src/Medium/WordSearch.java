@@ -16,14 +16,15 @@ public class WordSearch {
 
     private boolean dfs(char[][] board, char[] words, int i, int j, int index) {
         if (index == words.length) return true;
-        if(i<0 || j<0 || i>=board.length || j >=board[0].length) return false;
+        if (i<0 || j<0 || i>= board.length|| j >= board[0].length) return false;
         if (board[i][j] != words[index] || board[i][j] == '-') return false;
         char c = board[i][j];
         board[i][j] = '-';
-        boolean found = dfs(board, words, i+1,j, index+1) ||
-                        dfs(board, words, i,j+1, index+1) ||
-                        dfs(board, words, i-1,j, index+1) ||
-                        dfs(board, words, i,j-1, index+1);
+        boolean found = (dfs(board, words, i+1,j,index+1) ||
+                dfs(board, words, i,j+1,index+1) ||
+                dfs(board, words, i-1,j,index+1) ||
+                dfs(board, words, i,j-1,index+1));
+
         board[i][j] = c;
         return found;
     }
@@ -35,7 +36,7 @@ public class WordSearch {
                 {'S','F','C','S'},
                 {'A','D','E','E'}};
 
-        String word = "ABCB";
+        String word = "ABCCED";
         System.out.println(w.exist(board, word));
     }
 }

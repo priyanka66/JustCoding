@@ -5,6 +5,7 @@ public class DepthOfTree {
         int rightDepth = getMaxDepth(p.right);
         int leftDepth = getMaxDepth(p.left);
 
+
         return rightDepth > leftDepth ? rightDepth +1 : leftDepth +1;
     }
     public static void main(String[] args) {
@@ -15,6 +16,8 @@ public class DepthOfTree {
         p.left.left = new SymmetricTree.TreeNode(3);
         p.left.right = new SymmetricTree.TreeNode(3);
         p.right.left = new SymmetricTree.TreeNode(2);
+        p.right.left.left= new SymmetricTree.TreeNode(2);
+
 
         int depth = d.getMaxDepth(p);
         System.out.println("Depth : " + depth);

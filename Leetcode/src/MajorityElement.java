@@ -25,7 +25,6 @@ public class MajorityElement {
         int majIndex = 0;
         int count = 1;
         for (int i=1; i<nums.length; i++) {
-            System.out.println(count);
             if (nums[i] ==  nums[majIndex]) {
                 count++;
             } else {
@@ -39,12 +38,19 @@ public class MajorityElement {
             }
         }
 
-        return nums[majIndex];
+        if (count > 0) {
+            count = 0;
+            for (int num: nums) {
+                if (nums[majIndex] == num) count++;
+            }
+        }
+
+        return count > (nums.length/2) ?  nums[majIndex] : -1;
     }
 
     public static void main(String[] args) {
         MajorityElement m1 = new MajorityElement();
-        int nums[] = {2,3,2};
+        int nums[] = {2,1,2,4,7};
 //        System.out.println("MajorityElement " + m1.majorityElement(nums));
         System.out.println("MajorityElement " + m1.majorityElementByVoting(nums));
 

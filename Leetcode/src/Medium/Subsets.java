@@ -16,7 +16,7 @@ public class Subsets {
 
     public void generateSubsets(List<List<Integer>> result, List<Integer> temp, int[] nums, int start) {
         result.add(new ArrayList<>(temp));
-        for (int i = start;i<nums.length;i++) {
+        for (int i=start;i<nums.length;i++) {
             temp.add(nums[i]);
             generateSubsets(result, temp, nums, i+1);
             temp.remove(temp.size()-1);

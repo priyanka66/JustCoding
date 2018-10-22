@@ -1,16 +1,13 @@
 public class MinDepth {
 
-    public int minDepth(SymmetricTree.TreeNode p) {
-        if (p == null) return 0;
-        int minDepth;
-        int rightDepth = minDepth(p.right);
-        int leftDepth = minDepth(p.left);
-
-        if (rightDepth ==0 || leftDepth ==0) {
-            return  leftDepth + rightDepth+1;
-        }
-        else return Math.min(leftDepth, rightDepth) +1;
-
+    public int minDepth(SymmetricTree.TreeNode root) {
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return 1;
+        // A leaf is a node with no children.
+        if (root.left == null) return 1 + minDepth(root.right);
+        if (root.right == null) return 1 + minDepth(root.left);
+        // Only do Math.min() if root has two children.
+        return 1 + Math.min(minDepth(root.left),minDepth(root.right));
     }
     public static void main(String[] args) {
         MinDepth d = new MinDepth();
@@ -19,6 +16,10 @@ public class MinDepth {
 //        p.right = new SymmetricTree.TreeNode(2);
 //        p.left.left = new SymmetricTree.TreeNode(3);
 //        p.left.right = new SymmetricTree.TreeNode(3);
+//        p.left.right.right = new SymmetricTree.TreeNode(3);
+//        p.left.right.right.right = new SymmetricTree.TreeNode(3);
+
+
 //        p.right.left = new SymmetricTree.TreeNode(2);
 
         int depth = d.minDepth(p);

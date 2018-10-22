@@ -29,33 +29,38 @@ public class LevelOrderBottomUp {
     }
 
     public List<List<Integer>> levelOrderBottomV2(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<List<Integer>> ();
+        List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
 
         dfs(root, result, 0);
         return result;
     }
 
-    public void dfs(TreeNode root, List<List<Integer>> result, int depth) {
+    void dfs(TreeNode root,  List<List<Integer>> result, int depth) {
         if (root == null) return;
         if (result.size() <= depth) {
             List<Integer> temp = new ArrayList<>();
             temp.add(root.val);
-            result.add(0, temp);
+            result.add(0,temp);
         } else {
-            result.get(result.size()-1-depth).add(root.val);
+            System.out.println(result.size());
+            System.out.println(depth);
+            System.out.println(result.size()-1-depth);
+            result.get(0).add(root.val);
         }
 
-        dfs(root.left,result,depth+1);
-        dfs(root.right,result,depth+1);
+        dfs(root.left, result, depth+1);
+        dfs(root.right, result, depth+1);
     }
+
+
     public static void main(String[] args) {
         LevelOrderBottomUp l = new LevelOrderBottomUp();
-        TreeNode root = new TreeNode(3);
-        root.left= new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left= new TreeNode(15);
-        root.right.right = new TreeNode(7);
+        TreeNode root = new TreeNode(1);
+        root.left= new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left= new TreeNode(4);
+        root.right.right = new TreeNode(5);
 
         TreeNode root1 = root;
         System.out.println(l.levelOrderBottom(root));

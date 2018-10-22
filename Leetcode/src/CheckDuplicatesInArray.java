@@ -1,5 +1,4 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class CheckDuplicatesInArray {
 
@@ -12,12 +11,14 @@ public class CheckDuplicatesInArray {
          return false;
     }
 
+    // any value appears atleast twice
     public boolean containsDuplicateV2(int[] nums) {
-        Set<Integer> dup = new HashSet<>();
-        for (int i : nums) {
-            if (!dup.add(i)) return true;
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length-1;i++) {
+            if (nums[i] == nums[i+1]) {
+                return true;
+            }
         }
-
         return false;
     }
 

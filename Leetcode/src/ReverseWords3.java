@@ -7,14 +7,12 @@ public class ReverseWords3 {
         for (int i=0;i<strs.length;i++) {
             int k=strs[i].length()-1;
             while (k>=0) {
-                result.append(strs[i].charAt(k));
-                k--;
+                result.append(strs[i].charAt(k--));
             }
             result.append(" ");
         }
 
         return result.toString().trim();
-
     }
 
 

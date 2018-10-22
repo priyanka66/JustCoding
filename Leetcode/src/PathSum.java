@@ -1,4 +1,4 @@
-public class SumPath {
+public class PathSum {
 
     public boolean hasPathSum(SymmetricTree.TreeNode root, int sum) {
         if (root == null) return false;
@@ -12,10 +12,19 @@ public class SumPath {
             return hasPath;
         }
     }
+
+    public boolean hasPathSumV2(SymmetricTree.TreeNode root, int sum) {
+        if (root == null) return false;
+        else {
+            if (root.val == sum && root.left == null && root.right == null) return true;
+            return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);
+        }
+    }
+
     public static void main(String[] args) {
         SymmetricTree s1 = new SymmetricTree();
         SymmetricTree.TreeNode p = new SymmetricTree.TreeNode(5);
-        SumPath s2 = new SumPath();
+        PathSum s2 = new PathSum();
         p.left = new SymmetricTree.TreeNode(4);
         p.right = new SymmetricTree.TreeNode(8);
         p.left.left = new SymmetricTree.TreeNode(11);
@@ -27,8 +36,10 @@ public class SumPath {
         p.right.right.right = new SymmetricTree.TreeNode(1);
         int sum = 22;
 
-        if(s2.hasPathSum(p, sum)) System.out.println("YES");
-        else System.out.println("NO");
+//        if(s2.hasPathSum(p, sum)) System.out.println("YES");
+//        else System.out.println("NO");
+
+        System.out.println(s2.hasPathSumV2(p, sum));
 
 
     }

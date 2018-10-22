@@ -2,17 +2,16 @@ package Medium;
 
 public class SortList {
 
-    public static class ListNode{
+    public static class ListNode {
         int val;
         ListNode next;
         ListNode(int x) {
-            val = x;
+            val=x;
         }
     }
-
     private ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode slow = head, fast = head, prev=null;
+        ListNode slow=head, fast=head, prev=null;
         while (fast != null && fast.next != null) {
             prev = slow;
             slow = slow.next;
@@ -27,25 +26,25 @@ public class SortList {
     }
 
     private ListNode merge(ListNode head1, ListNode head2) {
-        ListNode node = new ListNode(0), res = node;
-        while (head1 != null && head2 !=null) {
+        ListNode node = new ListNode(0), res=node;
+        while (head1 != null && head2 != null) {
             if (head1.val <= head2.val) {
-                res.next = head1;
+                node.next = new ListNode(head1.val);
                 head1 = head1.next;
             } else {
-                res.next = head2;
+                node.next = new ListNode(head2.val);
                 head2 = head2.next;
             }
-            res = res.next;
+            node = node.next;
         }
 
         if (head1 == null) {
-            res.next = head2;
+            node.next = new ListNode(head2.val);
         } else {
-            res.next = head1;
+            node.next = new ListNode(head1.val);
         }
 
-        return node.next;
+        return res.next;
     }
 
 

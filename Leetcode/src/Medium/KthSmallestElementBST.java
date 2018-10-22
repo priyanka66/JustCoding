@@ -16,9 +16,8 @@ public class KthSmallestElementBST {
 
 
     public int kthSmallest(TreeNode root, int k) {
-        List<Integer> res = new ArrayList<>();
-        Stack<TreeNode> st = new Stack<>();
-        while (!st.isEmpty() || root != null) {
+        Stack<TreeNode> st = new Stack();
+        while (root != null || !st.empty()) {
             while (root != null) {
                 st.push(root);
                 root = root.left;
@@ -26,7 +25,7 @@ public class KthSmallestElementBST {
 
             root = st.pop();
             k--;
-            if (k==0) return root.val;
+            if (k ==0) return root.val;
             root = root.right;
         }
 
@@ -34,28 +33,27 @@ public class KthSmallestElementBST {
     }
 
     public int kthSmallestV2(TreeNode root, int k) {
-        List<Integer> track = new ArrayList<Integer>();
+        List<Integer> track = new ArrayList<>();
         track.add(0);
-        return getKSmallest(root, k, track).get(1);
+        track = getKthSmallest(root, track,k);
+        return track.get(1);
     }
 
-    List<Integer> getKSmallest(TreeNode root, int k, List<Integer> track) {
-        if(root == null) {
-            return track;
-        }
+    List<Integer> getKthSmallest(TreeNode root, List<Integer> track, int k) {
+        if (root ==null) return track;
 
-        track = getKSmallest(root.left, k, track);
-
-        int count  = track.get(0);
-        count += 1;
-        if(count == k) {
+        track = getKthSmallest(root.left, track, k);
+        int count = track.get(0);
+        count++;
+        if (count == k) {
             track.add(root.val);
             return track;
         }
         track.set(0, count);
-        return getKSmallest(root.right, k, track);
 
+        return getKthSmallest(root.right, track, k);
     }
+
 
     public static void main(String[] args) {
         KthSmallestElementBST b = new KthSmallestElementBST();
@@ -64,7 +62,7 @@ public class KthSmallestElementBST {
         root.left.right = new TreeNode(2);
         root.right = new TreeNode(5);
 
-        System.out.println(b.kthSmallest(root, 3));
+        System.out.println(b.kthSmallest(root, 4));
         System.out.println(b.kthSmallestV2(root, 4));
     }
 }

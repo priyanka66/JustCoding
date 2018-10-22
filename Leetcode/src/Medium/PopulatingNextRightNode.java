@@ -2,6 +2,7 @@ package Medium;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.TreeMap;
 
 public class PopulatingNextRightNode {
 
@@ -17,32 +18,35 @@ public class PopulatingNextRightNode {
         Queue<TreeLinkNode> q2 = new LinkedList<TreeLinkNode>();
         q1.add(root);
         while (!q1.isEmpty() || !q2.isEmpty()) {
-            while (!q1.isEmpty()) {
-                TreeLinkNode node = q1.poll();
-                if (node.left != null) q2.add(node.left);
-                if(node.right != null) q2.add(node.right);
-                if (q1.isEmpty()) {
-                    node.next = null;
-                } else{
-                    node.next = q1.peek();
+            if (!q1.isEmpty()) {
+                while (!q1.isEmpty()) {
+                    TreeLinkNode node = q1.poll();
+                    if (node.left != null) q2.add(node.left);
+                    if (node.right != null) q2.add(node.right);
+                    if (q1.isEmpty()) {
+                        node.next = null;
+                    } else {
+                        node.next = q1.peek();
+                    }
                 }
-            }
-
-            while (!q2.isEmpty()) {
-                TreeLinkNode node = q2.poll();
-                if (node.left != null) q1.add(node.left);
-                if(node.right != null) q1.add(node.right);
-                if (q2.isEmpty()) {
-                    node.next = null;
-                } else{
-                    node.next = q2.peek();
+            } else {
+                while (!q2.isEmpty()) {
+                    TreeLinkNode node = q2.poll();
+                    if (node.left != null) q1.add(node.left);
+                    if (node.right != null) q1.add(node.right);
+                    if (q2.isEmpty()) {
+                        node.next = null;
+                    } else {
+                        node.next = q2.peek();
+                    }
                 }
             }
         }
 
-        System.out.println(root);
-
+        return;
     }
+
+
     public static void main(String[] args){
         PopulatingNextRightNode p = new PopulatingNextRightNode();
         TreeLinkNode root = new TreeLinkNode(1);

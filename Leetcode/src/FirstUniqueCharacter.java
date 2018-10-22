@@ -32,7 +32,7 @@ public class FirstUniqueCharacter {
     }
     public static void main(String[] args) {
         FirstUniqueCharacter f = new FirstUniqueCharacter();
-        String s = "aadadaad";
+        String s = "aadapkdaad";
         System.out.println(f.firstUniqChar(s));
         System.out.println(f.firstUniqCharV2(s));
 
