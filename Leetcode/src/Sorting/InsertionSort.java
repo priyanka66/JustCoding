@@ -7,7 +7,6 @@ public class InsertionSort {
 
     public void insertionSort(int[] nums) {
         if (nums.length < 2) return;
-
         for (int i=1;i<nums.length;i++) {
             int hole=i, value= nums[hole];
             while (hole>0 && nums[hole-1] > nums[hole]) {
@@ -20,6 +19,7 @@ public class InsertionSort {
             nums[hole] = value;
         }
     }
+
     public static void main(String[] args) {
         InsertionSort s = new InsertionSort();
         int[] nums = {2,7,4,1,5,3};

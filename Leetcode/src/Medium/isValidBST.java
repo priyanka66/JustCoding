@@ -22,11 +22,10 @@ public class isValidBST {
                 root = root.left;
             }
             root = st.pop();
+            System.out.println(root.val+ " ");
             if (node != null && root.val < node.val) return false;
             node = root;
             root = root.right;
-//            if (root != null )
-//                System.out.println("cur-- "+  root.val + " ");
         }
 
         return true;
@@ -46,12 +45,12 @@ public class isValidBST {
     }
     public static void main(String[] args) {
         isValidBST b = new isValidBST();
-        TreeNode root = new TreeNode(2147483647);
-//        root.left = new TreeNode(1);
-//        root.right = new TreeNode(6);
-//        root.left.left = new TreeNode(1);
-//        root.left.right = new TreeNode(4);
-//        System.out.print(b.isValidBST(root));
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(6);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(4);
+        System.out.print(b.isValidBST(root));
         System.out.print(b.isValidBSTV2(root));
     }
 }

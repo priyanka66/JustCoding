@@ -15,22 +15,35 @@ public class KthLargestArray {
 
     private int findKthLargestV2(int[] nums, int k) {
         PriorityQueue<Integer> que = new PriorityQueue<>(Collections.reverseOrder());
-        for (int i:nums){
-            que.add(i);
+        for (int num:nums) {
+            que.offer(num);
         }
 
-        while (k>1) {
+        while (k>1){
             que.poll();
             k--;
         }
         return que.poll();
+
+
     }
-    public static void main(String[] args) {
+    private int findKthLargestV3(int[] nums, int k) {
+        PriorityQueue<Integer> que = new PriorityQueue<>(k+1);
+        for(int num:nums) {
+            que.offer(num);
+            if(que.size()>k) que.poll();
+        }
+        return que.poll();
+    }
+
+        public static void main(String[] args) {
         KthLargestArray m = new KthLargestArray();
         int[] nums = {3,2,1,5,6,4};
         int k = 2;
         System.out.println(m.findKthLargest(nums, k));
         System.out.println(m.findKthLargestV2(nums, k));
+        System.out.println(m.findKthLargestV3(nums, k));
+
     }
 
 }

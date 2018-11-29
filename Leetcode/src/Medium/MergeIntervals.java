@@ -16,30 +16,31 @@ public class MergeIntervals {
 
     }
 
-    private List<Interval> merge(List<Interval> intervals) {
-        List<Interval> result = new ArrayList<Interval>();
-        Collections.sort(intervals, new Comparator<Interval>(){
+    List<Interval> mergeV1 (List<Interval> intervals) {
+        List<Interval> result = new ArrayList<>();
+        if (intervals.size() == 0) return result;
+        Collections.sort(intervals, new Comparator<Interval>() {
             @Override
-            public int compare(Interval i1, Interval i2) {
+            public int compare (Interval i1, Interval i2) {
                 if (i1.start < i2.start) return -1;
                 else if (i1.start == i2.start) return 0;
                 else return 1;
             }
         });
-        if (intervals.size() == 0) return result;
+
         Interval i1 = intervals.get(0);
-        for (int i=1;i<intervals.size();i++) {
-            Interval i2 = intervals.get(i);
-            if (i2.start <= i1.end) {
+        for (int i=1; i<intervals.size();i++) {
+            Interval i2=intervals.get(i);
+            if (i2.start < i1.end) {
                 i1.end = Math.max(i1.end, i2.end);
-            }
-           else {
+            } else {
                 result.add(i1);
                 i1=i2;
             }
         }
+
         result.add(i1);
-        System.out.println(intervals);
+
         return result;
     }
     public static void main(String[] args) {
@@ -53,7 +54,7 @@ public class MergeIntervals {
         intervals.add(i1);
          i1 = new Interval(15,18);
         intervals.add(i1);
-        List<Interval> result = m1.merge(intervals);
+        List<Interval> result = m1.mergeV1(intervals);
         System.out.println(result);
 
 
