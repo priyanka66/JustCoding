@@ -19,12 +19,11 @@ public class TopKFrequentElements {
         }
 
         List<Map.Entry<Integer, Integer>> num = new ArrayList<>(freq.entrySet());
-        Collections.sort(num, new Comparator<Map.Entry<Integer, Integer>>() {
+        Collections.sort(num, new Comparator() {
             @Override
-            public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
-                if (o2.getValue() > o1.getValue()) return 1;
-                else if (o2.getValue() == o2.getValue()) return 0;
-                else return -1;
+            public int compare (Object o1, Object o2) {
+                return (((Comparable)((Map.Entry)(o2)).getValue())
+                        .compareTo(((Map.Entry)(o1)).getValue()));
             }
         });
 
@@ -58,7 +57,7 @@ public class TopKFrequentElements {
 
     public static void main(String[] args) {
         TopKFrequentElements t = new TopKFrequentElements();
-        int[] nums = {1,1,1,2,2,3};
+        int[] nums = {1,1,1,2,2,3,3,3};
         int k = 2;
         System.out.println(t.topKFrequent(nums,k));
         System.out.println(t.topKFrequentV2(nums,k));

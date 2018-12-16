@@ -39,7 +39,7 @@ public class KthLargestArray {
         public static void main(String[] args) {
         KthLargestArray m = new KthLargestArray();
         int[] nums = {3,2,1,5,6,4};
-        int k = 2;
+        int k = 4;
         System.out.println(m.findKthLargest(nums, k));
         System.out.println(m.findKthLargestV2(nums, k));
         System.out.println(m.findKthLargestV3(nums, k));

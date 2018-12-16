@@ -22,8 +22,7 @@ public class isValidBST {
                 root = root.left;
             }
             root = st.pop();
-            System.out.println(root.val+ " ");
-            if (node != null && root.val < node.val) return false;
+            if (node != null && root.val <= node.val) return false;
             node = root;
             root = root.right;
         }
@@ -37,7 +36,6 @@ public class isValidBST {
     }
 
     boolean isValidBST(TreeNode root, long min, long max) {
-        System.out.println(Long.MAX_VALUE);
         if (root == null) return true;
         if (root.val <= min || root.val >= max) return false;
         return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);

@@ -1,4 +1,4 @@
-package Easy;
+package Medium;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -53,9 +53,12 @@ public class LevelOrderTraversal {
     void bfs(TreeNode root, List<List<Integer>> result, int depth) {
         if (root == null) return;
         if (result.size()<= depth) {
-            result.add(new ArrayList<Integer>());
+            List<Integer> temp = new ArrayList<>();
+            temp.add(root.val);
+            result.add(temp);
+        } else {
+            result.get(depth).add(root.val);
         }
-        result.get(depth).add(root.val);
         bfs(root.left, result, depth+1);
         bfs(root.right, result, depth+1);
     }

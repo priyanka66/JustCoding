@@ -1,7 +1,5 @@
 package Medium;
 
-import java.awt.*;
-
 public class OddEvenLinkedList {
 
     public static class ListNode {
@@ -13,7 +11,6 @@ public class OddEvenLinkedList {
     }
 
     private ListNode oddEvenList(ListNode head) {
-
        if (head == null) return head;
        ListNode odd = head, even=head.next, evenStart = even;
        while (even != null && even.next != null) {
@@ -27,6 +24,7 @@ public class OddEvenLinkedList {
 
        return head;
     }
+
         public static void main(String[] args) {
         OddEvenLinkedList o = new OddEvenLinkedList();
         ListNode head = new ListNode(1);

@@ -13,11 +13,7 @@ public class SingleNumber111 {
         //Get the rightmost bit in xor that is set to 1
 
         int x = xor & ~(xor-1);
-        int mask=1;
 
-        System.out.println(mask);
-        System.out.println(xor);
-        System.out.println(x);
         //Iterate through the list and check for number where this 'x' bit set or not and group them
         for (int num:nums) {
             if ((x & num) > 0) {

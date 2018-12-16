@@ -1,52 +1,70 @@
 package Medium;
 
+import java.util.Scanner;
+
 class TicTacToe {
+    public static void main(String[] args){
+        char[][] playBoard = new char[3][3];
+        char currentChar = 'X';
+        boolean stillPlaying = true;
+        int row = 0,col = 0;
+        System.out.println(playBoard);
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                playBoard[i][j] = '-';
+            }
+        }
 
-    int[] rowCounter;
-    int[] colCounter;
-    int diagRight;
-    int diagLeft;
-    int n;
-    /** Initialize your data structure here. */
-    public TicTacToe(int n) {
-        rowCounter = new int[n];
-        colCounter = new int[n];
-        diagLeft = 0;
-        diagRight = 0;
-        this.n = n;
+        printBoard(playBoard);
+        play(stillPlaying,row,col,playBoard,currentChar);
     }
 
-    /** Player {player} makes a move at ({row}, {col}).
-     @param row The row of the board.
-     @param col The column of the board.
-     @param player The player, can be either 1 or 2.
-     @return The current winning condition, can be either:
-     0: No one wins.
-     1: Player 1 wins.
-     2: Player 2 wins. */
-    public int move(int row, int col, int player) {
-        int move = player == 1 ? 1 :-1;
-        rowCounter[row] += move;
-        colCounter[col] += move;
-        if (row == col) diagLeft += move;
-        if (row == n-col-1) diagRight += move;
 
-        if (rowCounter[row] == n || colCounter[col] == n || diagLeft == n || diagRight == n) return 2;
-        else  if (rowCounter[row] == -n || colCounter[col] == -n || diagLeft == -n || diagRight == -n) return 1;
-        else return  0;
+    private static void play(boolean stillPlaying, int row, int col, char[][] playBoard, char currentChar) {
+        stillPlaying = true;
+        Scanner sc = new Scanner(System.in);
+        while(stillPlaying){
+            System.out.println("Player "+currentChar +" turn");
+            System.out.println("Enter row");
+            row = sc.nextInt();
+            System.out.println("Enter column");
+            col = sc.nextInt();
+            playBoard[row][col] = currentChar;
+            if(gameOver(playBoard,row,col)){
+                stillPlaying = false;
+                System.out.println("Game over! player "+currentChar +"wins");
+            }
+            if(currentChar == 'X'){
+                currentChar = 'O';
+            }else{
+                currentChar = 'X';
+            }
+            printBoard(playBoard);
+        }
     }
 
-    public static void main(String[] args) {
-        int n = 3;
-        TicTacToe toe = new TicTacToe(3);
 
-        System.out.println(toe.move(0, 0, 1));
-        System.out.println(toe.move(0, 2, 2));
-        System.out.println(toe.move(2, 2, 1));
-        System.out.println(toe.move(1, 1, 2));
-        System.out.println(toe.move(2, 0, 1));
-        System.out.println(toe.move(1, 0, 2));
-        System.out.println(toe.move(2, 1, 1));
+    private static boolean gameOver(char[][] playBoard, int row, int col) {
+        if(playBoard[0][col] == playBoard[1][col] && playBoard[0][col] == playBoard[2][col])
+            return true;
+        if(playBoard[row][0] == playBoard[row][1] && playBoard[row][0] == playBoard[row][2])
+            return true;
+        if(playBoard[0][0] == playBoard[1][1] && playBoard[0][0] == playBoard[2][2] && playBoard[1][1]!='-')
+            return true;
+        if(playBoard[0][2] == playBoard[1][1] && playBoard[0][2] == playBoard[2][0] && playBoard[1][1]!='-')
+            return true;
+
+        return false;
+    }
+
+
+    private static void printBoard(char[][] temp) {
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                System.out.print(temp[i][j]);
+            }
+            System.out.print("\n");
+        }
     }
 
 }
