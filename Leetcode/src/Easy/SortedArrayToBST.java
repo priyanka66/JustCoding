@@ -18,7 +18,7 @@ public class SortedArrayToBST {
     public static TreeNode createBST(int start, int[] nums, int end) {
         if (start > end) return null;
         int mid = (start+end)/2;
-        TreeNode root = new TreeNode(mid);
+        TreeNode root = new TreeNode(nums[mid]);
         root.left = createBST(start, nums, mid-1);
         root.right = createBST(mid+1, nums, end);
         return root;

@@ -10,7 +10,7 @@ public class BuyAndSellV2 {
        return maxProfit;
     }
     public static void main(String[] args) {
-        int prices[] = {7,6,4,3,1};
+        int prices[] = {1,2,3,4,5};
         System.out.println("Max profit = " + maxProfit(prices));
     }
 }
