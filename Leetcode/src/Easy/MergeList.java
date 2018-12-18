@@ -49,11 +49,11 @@ public class MergeList {
         MergeList m1 = new MergeList();
         ListNode l1 = new ListNode(-9);
         l1.next = new ListNode(3);
-//        l1.next.next = new ListNode(4);
+        l1.next.next = new ListNode(4);
 
         ListNode l2 = new ListNode(5);
         l2.next = new ListNode(7);
-//        l2.next.next = new ListNode(4);
+        l2.next.next = new ListNode(14);
 
         ListNode l3 = mergeTwoLists(l1, l2);
         while (l3 != null) {

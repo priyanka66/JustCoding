@@ -32,7 +32,7 @@ public class PlusOne {
 
     public static void main(String[] args) {
         PlusOne p1 = new PlusOne();
-        int[] digits = {9,9};
+        int[] digits = {8,9};
         System.out.println(Arrays.toString(p1.plusOne(digits)));
     }
 }

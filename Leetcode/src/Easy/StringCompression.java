@@ -1,40 +1,33 @@
 package Easy;
 
+import com.sun.jdi.CharType;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class StringCompression {
 
     public int compress(char[] chars) {
-        int pos=0;
-        char temp=' ';
-        int count=0;
-        for(char c:chars)
-        {
-            if(c!=temp)
-            {
-                if(count!=0)
-                    chars[pos++]=temp;
-                if(count>1)
-                {
-                    for(int i=0;i<(count+"").length();i++)
-                        chars[pos++]=(count+"").charAt(i);
-                }
-                count=1;
-                temp=c;
-            }
-            else
+        int count=0, i=0, pos=0;
+        while (i<chars.length) {
+            char val = chars[i];
+            count=0;
+            while (i<chars.length && val == chars[i]) {
+                i++;
                 count++;
+            }
+            chars[pos++] = val;
+            if(count != 1)
+                for(char x : Integer.toString(count).toCharArray())
+                    chars[pos++] = x;
         }
-        chars[pos++]=temp;
-        if(count!=1)
-        {
-            for(int i=0;i<(count+"").length();i++)
-                chars[pos++]=(count+"").charAt(i);
-        }
+        System.out.println(Arrays.toString(chars));
         return pos;
     }
 
     public static void main(String[] args) {
         StringCompression s = new StringCompression();
-        char[] chars = {'a','b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'};
+        char[] chars = {'a','b', 'b', 'b', 'b','b','b','b','b', 'b', 'b', 'b','b','b','b'};
         System.out.println(s.compress(chars));
 
     }

@@ -16,7 +16,7 @@ public class PerfectNumber {
         return false;
     }
     public static void main(String[] args) {
-        int n = 23;
+        int n = 28;
         PerfectNumber p = new PerfectNumber();
         System.out.println(p.checkPerfectNumber(n));
     }

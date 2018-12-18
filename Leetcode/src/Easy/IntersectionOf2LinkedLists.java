@@ -59,7 +59,7 @@ public class IntersectionOf2LinkedLists {
         ListNode headB = new ListNode(7);
         headB.next = new ListNode(8);
         headB.next.next = new ListNode(3);
-        headB.next.next.next = headA.next.next.next;
+        headB.next.next.next = new ListNode(4);
 
         ListNode result = i.getIntersectionNode(headA, headB);
         System.out.println(result);
