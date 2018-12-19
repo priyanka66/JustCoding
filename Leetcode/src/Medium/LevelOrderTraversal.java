@@ -46,11 +46,11 @@ public class LevelOrderTraversal {
 
     public List<List<Integer>> levelOrderV2(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
-        bfs(root, result, 0);
+        dfs(root, result, 0);
         return result;
     }
 
-    void bfs(TreeNode root, List<List<Integer>> result, int depth) {
+    void dfs(TreeNode root, List<List<Integer>> result, int depth) {
         if (root == null) return;
         if (result.size()<= depth) {
             List<Integer> temp = new ArrayList<>();
@@ -59,8 +59,8 @@ public class LevelOrderTraversal {
         } else {
             result.get(depth).add(root.val);
         }
-        bfs(root.left, result, depth+1);
-        bfs(root.right, result, depth+1);
+        dfs(root.left, result, depth+1);
+        dfs(root.right, result, depth+1);
     }
     public static void main(String[] args) {
         LevelOrderTraversal l = new LevelOrderTraversal();

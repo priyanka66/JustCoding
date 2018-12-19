@@ -24,9 +24,8 @@ public class KthLargestArray {
             k--;
         }
         return que.poll();
-
-
     }
+
     private int findKthLargestV3(int[] nums, int k) {
         PriorityQueue<Integer> que = new PriorityQueue<>(k+1);
         for(int num:nums) {

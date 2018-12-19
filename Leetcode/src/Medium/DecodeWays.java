@@ -9,7 +9,7 @@ public class DecodeWays {
             int temp = cur;
             if (s.charAt(i-1) == '1' || s.charAt(i-1) == '2' && s.charAt(i) <='6') {
                 if (s.charAt(i) == '0') {
-                    cur = 0;
+                    cur = prev;
                 } else {
                     cur = cur+prev;
                 }
@@ -24,7 +24,7 @@ public class DecodeWays {
     }
     public static void main(String[] args) {
         DecodeWays d = new DecodeWays();
-        String s = "226";
+        String s = "206";
         System.out.println(d.numDecodings(s));
     }
 }

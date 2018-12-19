@@ -21,8 +21,8 @@ public class SearchRoatedArray {
     }
     public static void main(String[] args) {
         SearchRoatedArray s = new SearchRoatedArray();
-        int nums[] = {4,5,6,7,0,1,2};
-        int target = 0;
+        int nums[] = {5,6,7,0,1,2,3};
+        int target = 7;
         System.out.println(s.search(nums,target));
     }
 }
