@@ -55,11 +55,30 @@ public class TopKFrequentElements {
         return new ArrayList<>(minHeap);
     }
 
+    private List<Integer> topKFrequentV3(int[] nums, int k) {
+        List<Integer> result = new ArrayList<>();
+        Map<Integer, Integer> hmap = new LinkedHashMap<>();
+        for (int num:nums) {
+            hmap.put(num, hmap.getOrDefault(num,0)+1);
+        }
+
+        PriorityQueue<Map.Entry<Integer, Integer>> queue = new PriorityQueue<>((a,b) -> (b.getValue()-a.getValue()));
+        for (Map.Entry<Integer, Integer> entry : hmap.entrySet()) {
+            queue.offer(entry);
+        }
+
+        while (result.size()<k) {
+            result.add(queue.poll().getKey());
+        }
+
+        return result;
+    }
     public static void main(String[] args) {
         TopKFrequentElements t = new TopKFrequentElements();
         int[] nums = {1,1,1,2,2,3,3,3};
         int k = 2;
         System.out.println(t.topKFrequent(nums,k));
         System.out.println(t.topKFrequentV2(nums,k));
+        System.out.println(t.topKFrequentV3(nums,k));
     }
 }

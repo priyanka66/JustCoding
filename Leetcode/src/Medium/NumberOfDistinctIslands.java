@@ -6,30 +6,27 @@ import java.util.Set;
 public class NumberOfDistinctIslands {
 
     public int numDistinctIslands(int[][] grid) {
-        if (grid == null || grid.length < 1 || grid[0].length < 1) return 0;
-        int m = grid.length, n = grid[0].length;
-        Set<String> res = new HashSet<>();
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                Set<String> set = new HashSet<>();
+        Set<String> distinct = new HashSet<>();
+        for(int i=0;i<grid.length;i++) {
+            for (int j=0;j<grid[0].length;j++) {
                 if (grid[i][j] == 1) {
-                    dfs(grid, i, j, i, j, set);
-                    res.add(set.toString());
+                    String val = dfs(grid,i,j, new StringBuilder("f"));
+                    distinct.add(val);
                 }
             }
         }
-        return res.size();
+        return distinct.size();
     }
 
-    public void dfs(int[][] grid, int i, int j, int baseX, int baseY, Set<String> set) {
-        int m = grid.length, n = grid[0].length;
-        if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] == 0) return;
-        set.add((i - baseX) + "_" + (j - baseY));
+    public String dfs(int[][] grid, int i, int j, StringBuilder s) {
+        if (i<0 || i>= grid.length || j<0 || j>= grid[0].length || grid[i][j] != 1)
+            return s.toString();
         grid[i][j] = 0;
-        dfs(grid, i + 1, j, baseX, baseY, set);
-        dfs(grid, i - 1, j, baseX, baseY, set);
-        dfs(grid, i, j - 1, baseX, baseY, set);
-        dfs(grid, i, j + 1, baseX, baseY, set);
+        s.append(dfs(grid, i-1,j, new StringBuilder("u")));
+        s.append(dfs(grid, i,j+1, new StringBuilder("r")));
+        s.append(dfs(grid, i+1,j, new StringBuilder("d")));
+        s.append(dfs(grid, i,j-1, new StringBuilder("l")));
+        return s.toString();
     }
 
     public static void main(String[] args) {
@@ -43,7 +40,11 @@ public class NumberOfDistinctIslands {
                         {1,1,1,0,0,0,0,1},
                         {1,1,1,0,0,0,0,1},
                         {1,1,1,1,0,0,1,1}};
-
-        System.out.println(i.numDistinctIslands(areaMap));
+        int[][] grid = {
+                {1,1,0,1,1},
+                {1,0,0,0,0},
+                {0,0,0,0,1},
+                {1,1,0,1,1}};
+        System.out.println(i.numDistinctIslands(grid));
     }
 }
