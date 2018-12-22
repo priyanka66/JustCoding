@@ -15,7 +15,7 @@ public class NextInt {
                 break;
             }
         }
-
+        System.out.println(Arrays.toString(nums));
         if (i>0) {
             int j = 0;
             while (j<nums.length) {
@@ -31,7 +31,7 @@ public class NextInt {
 
     public static void main(String[] args) {
         NextInt n = new NextInt();
-        String line = "206155";
+        String line = "132";
         System.out.println(n.nextMax(line));
         char[] first  = line.toCharArray();
         Arrays.sort(first);
