@@ -37,6 +37,7 @@ public class ShuffleArray {
         int[] nums = {1,2,3};
         ShuffleArray s = new ShuffleArray(nums);
         System.out.println(Arrays.toString(s.shuffle()));
+        System.out.println(Arrays.toString(s.shuffle()));
         System.out.println(Arrays.toString(s.reset()));
     }
 }

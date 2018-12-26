@@ -1,76 +1,44 @@
 package Medium;
 
-import java.util.Scanner;
 
 class TicTacToe {
-    public static void main(String[] args){
-        char[][] playBoard = new char[3][3];
-        char currentChar = 'X';
-        boolean stillPlaying = true;
-        int row = 0,col = 0;
-        System.out.println(playBoard);
-        for(int i=0;i<3;i++){
-            for(int j=0;j<3;j++){
-                playBoard[i][j] = '-';
-            }
-        }
+    int[] rows ;
+    int[] cols;
+    int diagnonal, antiDiagonal;
 
-        printBoard(playBoard);
-        play(stillPlaying,row,col,playBoard,currentChar);
+    TicTacToe(int n) {
+        rows  = new int[n];
+        cols  = new int[n];
     }
 
+    int move(int row, int col, int player) {
+        int val =  player == 1 ? 1 : -1;
+        rows[row] += val;
+        cols[col] += val;
+        if (row == col) diagnonal += val;
+        if (col == cols.length-row-1) antiDiagonal+=val;
 
-    private static void play(boolean stillPlaying, int row, int col, char[][] playBoard, char currentChar) {
-        stillPlaying = true;
-        Scanner sc = new Scanner(System.in);
-        while(stillPlaying){
-            System.out.println("Player "+currentChar +" turn");
-            System.out.println("Enter row");
-            row = sc.nextInt();
-            System.out.println("Enter column");
-            col = sc.nextInt();
-            playBoard[row][col] = currentChar;
-            if(gameOver(playBoard,row,col)){
-                stillPlaying = false;
-                System.out.println("Game over! player "+currentChar +"wins");
-            }
-            if(currentChar == 'X'){
-                currentChar = 'O';
-            }else{
-                currentChar = 'X';
-            }
-            printBoard(playBoard);
-        }
+        int size = rows.length;
+        if (Math.abs(rows[row]) == size ||
+                Math.abs(cols[col]) == size ||
+                Math.abs(diagnonal) == size ||
+                Math.abs(antiDiagonal) == size)
+            return player;
+
+        else
+            return 0;
     }
 
-
-    private static boolean gameOver(char[][] playBoard, int row, int col) {
-        if(playBoard[0][col] == playBoard[1][col] && playBoard[0][col] == playBoard[2][col])
-            return true;
-        if(playBoard[row][0] == playBoard[row][1] && playBoard[row][0] == playBoard[row][2])
-            return true;
-        if(playBoard[0][0] == playBoard[1][1] && playBoard[0][0] == playBoard[2][2] && playBoard[1][1]!='-')
-            return true;
-        if(playBoard[0][2] == playBoard[1][1] && playBoard[0][2] == playBoard[2][0] && playBoard[1][1]!='-')
-            return true;
-
-        return false;
+    public static void main(String[] args) {
+        int n = 3;
+        TicTacToe obj = new TicTacToe(n);
+        System.out.println(obj.move(2,1,-1));
+        System.out.println(obj.move(1,0,1));
+        System.out.println(obj.move(2,0,-1));
+        System.out.println(obj.move(1,1,1));
+        System.out.println(obj.move(0,1,-1));
+        System.out.println(obj.move(1,2,1));
+        System.out.println(obj.move(2,2,-1));
     }
-
-
-    private static void printBoard(char[][] temp) {
-        for(int i=0;i<3;i++){
-            for(int j=0;j<3;j++){
-                System.out.print(temp[i][j]);
-            }
-            System.out.print("\n");
-        }
-    }
-
 }
 
-/**
- * Your TicTacToe object will be instantiated and called as such:
- * TicTacToe obj = new TicTacToe(n);
- * int param_1 = obj.move(row,col,player);
- */

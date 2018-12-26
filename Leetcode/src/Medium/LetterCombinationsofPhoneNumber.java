@@ -1,5 +1,7 @@
 package Medium;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class LetterCombinationsofPhoneNumber {
         String[] map = {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         result.add("");
         for(int i=0;i<digits.length();i++) {
-            int x = Character.getNumericValue(digits.charAt(i));
+            int x = digits.charAt(i)-'0';
             while (result.peek().length() == i) {
                 String val =  result.remove();
                 for (char c : map[x].toCharArray()) {
@@ -24,10 +26,41 @@ public class LetterCombinationsofPhoneNumber {
 
         return result;
     }
+
+    HashMap<Character, String> digitMap = new HashMap<>();
+    LetterCombinationsofPhoneNumber() {
+        digitMap.put('2', "abc");
+        digitMap.put('3', "def");
+        digitMap.put('4', "ghi");
+        digitMap.put('5', "jkl");
+        digitMap.put('6', "mno");
+        digitMap.put('7', "pqrs");
+        digitMap.put('8', "tuv");
+        digitMap.put('9', "wxyz");
+    }
+    private List<String> letterCombinationsV2 (String digits) {
+        List<String> result = new ArrayList<>();
+        if (digits.length() == 0  || digits == null) return result;
+        letterCombinations(digits, 0, "", result);
+        return result;
+    }
+
+    void letterCombinations(String digits, int index, String temp, List<String> result)  {
+        if (index  == digits.length()) {
+            result.add(temp);
+            return;
+        }
+        String str  = digitMap.get(digits.charAt(index));
+        for (int i=0;i<str.length();i++) {
+            letterCombinations(digits, index+1, temp+str.charAt(i), result);
+        }
+    }
+
     public static void main(String[] args) {
         LetterCombinationsofPhoneNumber l = new LetterCombinationsofPhoneNumber();
         String digits = "23";
 
         System.out.println(l.letterCombinations(digits));
+        System.out.println(l.letterCombinationsV2(digits));
     }
 }
