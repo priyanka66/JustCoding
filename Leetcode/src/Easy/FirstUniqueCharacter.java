@@ -15,6 +15,7 @@ public class FirstUniqueCharacter {
                 hmap.put(s.charAt(i), i);
             }
         }
+
         for(HashMap.Entry<Character,Integer> entry :hmap.entrySet()) {
             return entry.getValue();
         }

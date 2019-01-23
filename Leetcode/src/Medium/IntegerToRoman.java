@@ -17,7 +17,7 @@ public class IntegerToRoman {
 
     public static void main(String[] args) {
         IntegerToRoman  r = new IntegerToRoman();
-        int num = 3;//MCMXCIV
+        int num = 1994;//MCMXCIV
         System.out.println(r.intToRoman(num));
     }
 }

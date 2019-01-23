@@ -6,6 +6,7 @@ public class ReverseWordsStringII {
         if (str.length == 0 || str == null) return;
         int i=0, j=str.length;
         swap(str, i, j-1);
+        System.out.println(str);
         int start = 0;
         while (i<j) {
             while (i<j && str[i]!=' ') i++;
@@ -27,5 +28,6 @@ public class ReverseWordsStringII {
         ReverseWordsStringII s = new ReverseWordsStringII();
         char[] str = {'t','h','e', ' ','s', 'k', 'y', ' ', 'i', 's', ' ', 'b', 'l', 'u', 'e'};
         s.reverseWords(str);
+        System.out.println(str);
     }
 }

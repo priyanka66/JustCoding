@@ -10,7 +10,7 @@ public class BoundaryBinaryTree {
       TreeNode(int x) { val = x; }
   }
     List<Integer> nodes = new ArrayList<>(1000);
-    public List<Integer> boundaryOfBinaryTree(TreeNode root) {
+    private List<Integer> boundaryOfBinaryTree(TreeNode root) {
 
         if(root == null) return nodes;
 
@@ -22,19 +22,19 @@ public class BoundaryBinaryTree {
 
         return nodes;
     }
-    public void leftBoundary(TreeNode root) {
+    private void leftBoundary(TreeNode root) {
         if(root == null || (root.left == null && root.right == null)) return;
         nodes.add(root.val);
         if(root.left == null) leftBoundary(root.right);
         else leftBoundary(root.left);
     }
-    public void rightBoundary(TreeNode root) {
+    private void rightBoundary(TreeNode root) {
         if(root == null || (root.right == null && root.left == null)) return;
         if(root.right == null)rightBoundary(root.left);
         else rightBoundary(root.right);
         nodes.add(root.val); // add after child visit(reverse)
     }
-    public void leaves(TreeNode root) {
+    private void leaves(TreeNode root) {
         if(root == null) return;
         if(root.left == null && root.right == null) {
             nodes.add(root.val);
@@ -44,6 +44,7 @@ public class BoundaryBinaryTree {
         leaves(root.right);
     }
 
+    //[1, 2, 4, 7, 8, 9, 10, 6, 3]
     public static void main(String[] args) {
         BoundaryBinaryTree b = new BoundaryBinaryTree();
         TreeNode root  = new TreeNode(1);

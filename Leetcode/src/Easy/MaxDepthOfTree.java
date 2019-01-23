@@ -8,7 +8,7 @@ public class MaxDepthOfTree {
         int leftDepth = getMaxDepth(p.left);
 
 
-        return rightDepth > leftDepth ? rightDepth +1 : leftDepth +1;
+        return Math.max(rightDepth, leftDepth) +1;
     }
     public static void main(String[] args) {
         MaxDepthOfTree d = new MaxDepthOfTree();

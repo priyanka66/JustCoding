@@ -20,7 +20,7 @@ public class PerfectSquares {
         int dp[] = new int[n+1];
         for (int i=0;i<=n;i++) dp[i] = i;
 
-        for (int i= (int)Math.sqrt(n);i<=n;i++) {
+        for (int i=(int)Math.sqrt(n);i<=n;i++) {
             for(int j=1;j<=Math.sqrt(i);j++) {
                 dp[i] = Math.min(dp[i], dp[i-(j*j)] +1);
             }
@@ -31,7 +31,7 @@ public class PerfectSquares {
     }
     public static void main(String[] args) {
         PerfectSquares s = new PerfectSquares();
-        int n = 13;
+        int n = 12;
         System.out.println(s.numSquares(n));
     }
 }

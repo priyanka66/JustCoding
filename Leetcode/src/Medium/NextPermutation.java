@@ -1,5 +1,6 @@
 package Medium;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class NextPermutation {
@@ -28,6 +29,8 @@ public class NextPermutation {
             }
         }
         Arrays.sort(nums, index+1,nums.length);
+        System.out.println(Arrays.toString(nums));
+
     }
 
     public static void main(String[] args) {

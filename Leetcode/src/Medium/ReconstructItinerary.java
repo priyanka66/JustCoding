@@ -14,6 +14,7 @@ public class ReconstructItinerary {
             hmap.putIfAbsent(ticket[0], new PriorityQueue<>((a,b)->a.compareTo(b)));
             hmap.get(ticket[0]).offer(ticket[1]);
         }
+        System.out.println(hmap);
         findItinerary("JFK", hmap, result);
         return result;
     }

@@ -2,7 +2,7 @@ package Easy;
 
 import java.util.Arrays;
 
-public class RotateArray {
+public class  RotateArray {
 
     public void rotate(int[] nums, int k){
         if (nums == null || k ==0 ) return;

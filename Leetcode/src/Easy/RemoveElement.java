@@ -15,6 +15,7 @@ public class RemoveElement {
             }
         }
 
+        System.out.println(Arrays.toString(nums));
         return count;
     }
 
