@@ -45,12 +45,15 @@ public class AddTwoNumbers {
         l2.next = new ListNode(6);
         l2.next.next = new ListNode(4);
 
-        ListNode result = a1.addTwoNumbers(l1, l2);
-        while (result!= null) {
-            System.out.println(result.val);
-            result = result.next;
-        }
+//        ListNode result = a1.addTwoNumbers(l1, l2);
+//        while (result!= null) {
+//            System.out.println(result.val);
+//            result = result.next;
+//        }
 
+        System.out.println(234%100);
+
+        System.out.println(123/1000);
     }
 }
 

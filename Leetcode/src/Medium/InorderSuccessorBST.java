@@ -32,7 +32,7 @@ public class InorderSuccessorBST {
         root.left.right = new TreeNode(4);
         root.right = new TreeNode(6);
 
-        System.out.println(t.inorderSuccessor(root, new TreeNode(5)).val);
+        System.out.println(t.inorderSuccessor(root, new TreeNode(3)).val);
 
     }
 }

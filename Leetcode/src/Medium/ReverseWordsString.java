@@ -22,7 +22,7 @@ public class ReverseWordsString {
 
 
     public static void main(String[] args) {
-        String s = "a   b";
+        String s = "the sky is blue ";
         ReverseWordsString r = new ReverseWordsString();
         System.out.println(r.reverseWords(s));
     }
