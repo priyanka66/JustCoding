@@ -1,5 +1,6 @@
 package Medium;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -11,41 +12,39 @@ public class MeetingRoomsII {
       int start;
       int end;
       Interval() { start = 0; end = 0; }
-      Interval(int s, int e) { start = s; end = e; }
+
+        Interval(int s, int e) { start = s; end = e; }
   }
 
     private static int minMeetingRooms(Interval[] intervals) {
 
         if (intervals.length == 0 || intervals == null) return 0;
-        int count = 0;
-        Arrays.sort(intervals, new Comparator<Interval>(){
-            public int compare(Interval i1, Interval i2) {
-                return i1.start - i2.start;
+        Arrays.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.start-o2.start;
             }
         });
-
-
-        PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
-        queue.offer(intervals[0].end);
-        count = 1;
-        for (int i =1;i<intervals.length;i++) {
+        PriorityQueue<Integer> queue  = new PriorityQueue<>();
+        Interval i1 = intervals[0];
+        int count = 1;
+        queue.offer(i1.end);
+        for (int i=1;i<intervals.length;i++) {
             if (intervals[i].start < queue.peek()) {
                 count++;
             } else {
                 queue.poll();
             }
-
             queue.offer(intervals[i].end);
         }
-
         return count;
     }
 
     public static void main(String[] args) {
         MeetingRoomsII m = new MeetingRoomsII();
         Interval[] intervals = new Interval[3];
-        intervals[0] = new Interval(7,10);
-        intervals[1] = (new Interval(2,4));
+        intervals[0] = new Interval(5,10);
+        intervals[1] = (new Interval(0,30));
         intervals[2] = (new Interval(15,20));
 
         System.out.println(m.minMeetingRooms(intervals));

@@ -1,8 +1,6 @@
+
 package Easy;
 
-import com.sun.jdi.CharType;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class StringCompression {

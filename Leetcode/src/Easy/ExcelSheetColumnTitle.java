@@ -15,7 +15,7 @@ public class ExcelSheetColumnTitle {
     }
     public static void main(String[] args) {
         ExcelSheetColumnTitle e = new ExcelSheetColumnTitle();
-        int n = 701;
+        int n = 28;
         System.out.println(e.convertToTitle(n));
     }
 }

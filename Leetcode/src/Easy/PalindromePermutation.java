@@ -20,7 +20,7 @@ public class PalindromePermutation {
     }
     public static void main(String[] args) {
         PalindromePermutation p = new PalindromePermutation();
-        String s = "aabbccdfg";
+        String s = "aabccdd";
         System.out.println(p.canPermutePalindrome(s));
     }
 }

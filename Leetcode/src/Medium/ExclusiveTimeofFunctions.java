@@ -30,12 +30,14 @@ public class ExclusiveTimeofFunctions {
 
     public static void main(String[] args) {
         ExclusiveTimeofFunctions t = new ExclusiveTimeofFunctions();
-        int n = 2;
+        int n = 3;
         List<String> logs = new ArrayList<>();
         logs.add("0:start:0");
         logs.add("1:start:2");
-        logs.add("1:end:5");
-        logs.add("0:end:6");
+        logs.add("2:start:4");
+        logs.add("2:end:6");
+        logs.add("1:end:8");
+        logs.add("0:end:10");
         System.out.println(Arrays.toString(t.exclusiveTime(n, logs)));
     }
 }

@@ -40,11 +40,11 @@ public class Battleships {
     public static void main(String[] args) {
         Battleships b = new Battleships();
         char[][] board = {
-                {'X','.','.','X'},
                 {'.','.','.','X'},
+                {'X','X','X','X'},
                 {'.','.','.','X'}};
 
-//        System.out.println(b.countBattleships(board));
+        System.out.println(b.countBattleships(board));
         System.out.println(b.countBattleshipsV2(board));
 
     }

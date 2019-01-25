@@ -19,14 +19,15 @@ public class MergeIntervals {
     List<Interval> mergeV1 (List<Interval> intervals) {
         List<Interval> result = new ArrayList<>();
         if (intervals.size() == 0) return result;
-        Collections.sort(intervals, new Comparator<Interval>() {
-            @Override
-            public int compare (Interval i1, Interval i2) {
-                if (i1.start < i2.start) return -1;
-                else if (i1.start == i2.start) return 0;
-                else return 1;
-            }
-        });
+        intervals.sort((i1,i2) -> i1.start-i2.start);
+//        Collections.sort(intervals, new Comparator<Interval>() {
+//            @Override
+//            public int compare (Interval i1, Interval i2) {
+//                if (i1.start < i2.start) return -1;
+//                else if (i1.start == i2.start) return 0;
+//                else return 1;
+//            }
+//        });
 
         Interval i1 = intervals.get(0);
         for (int i=1; i<intervals.size();i++) {
