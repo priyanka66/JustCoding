@@ -6,7 +6,9 @@ public class LongestCommonPrefix {
         if (strs.length == 0) return "";
         String s = strs[0];
         for (int i=1; i<strs.length;i++) {
+            System.out.println(strs[i].indexOf(s));
             while (strs[i].indexOf(s) != 0) {
+                System.out.println(strs[i].indexOf(s));
                 s = s.substring(0,s.length()-1);
                 if (s.isEmpty()) return "";
             }

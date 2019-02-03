@@ -10,7 +10,7 @@ public class MedianOfDataStream {
     PriorityQueue<Integer> minHeap;
 
     public MedianOfDataStream() {
-        maxHeap = new PriorityQueue<>(1, Comparator.reverseOrder());
+        maxHeap = new PriorityQueue<>((a,b)->b-a);
         minHeap = new PriorityQueue<>();
     }
 

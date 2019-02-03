@@ -16,6 +16,7 @@ public class SubarraySumEqualsK {
             if (hmap.containsKey(target)) {
                 ans += hmap.get(target);
             }
+
             hmap.put(sum, hmap.getOrDefault(sum,0)+1);
         }
 

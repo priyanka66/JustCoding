@@ -3,7 +3,7 @@ package Medium;
 
 import java.util.Stack;
 
-public class isValidBST {
+public class ValidBST {
     public  static class TreeNode {
         int val;
         TreeNode left,right;
@@ -42,7 +42,7 @@ public class isValidBST {
 
     }
     public static void main(String[] args) {
-        isValidBST b = new isValidBST();
+        ValidBST b = new ValidBST();
         TreeNode root = new TreeNode(5);
         root.left = new TreeNode(1);
         root.right = new TreeNode(6);

@@ -25,7 +25,6 @@ public class ReconstructItinerary {
             findItinerary(next.poll(), hmap, result);
         }
         result.add(0,depart);
-
     }
 
     public static void main(String[] args) {

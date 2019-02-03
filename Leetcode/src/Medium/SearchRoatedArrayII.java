@@ -22,9 +22,9 @@ public class SearchRoatedArrayII {
 
     public static void main(String[] args) {
         SearchRoatedArrayII s = new SearchRoatedArrayII();
-        int nums[] = {3,1}; //{5,6,7,0,1,2,3};
+        int nums[] = {2,5,6,0,0,1,2}; //{5,6,7,0,1,2,3};
 
-        int target = 1;
+        int target = 3;
         System.out.println(s.search(nums,target));
     }
 

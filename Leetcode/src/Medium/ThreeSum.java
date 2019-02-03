@@ -8,20 +8,22 @@ public class ThreeSum {
         List<List<Integer>> result = new ArrayList<>();
         if (nums.length == 0) return result;
         Arrays.sort(nums);
-
-        for (int i=0;i<nums.length-2;i++) {
-            if(i > 0 && nums[i] == nums[i - 1]) continue;
-            int start=i+1, end=nums.length-1;
+        for(int i=0;i<nums.length-1;i++) {
+            if (i>0 && nums[i] == nums[i-1]) continue;
+            int sum = 0;
+            int start = i+1, end=nums.length-1;
             while (start<end) {
-                int sum = nums[i] + nums[start]+nums[end];
-                if(sum == 0) {
-                    result.add(new ArrayList<>(Arrays.asList(nums[i], nums[start], nums[end])));
-                    while(start < end && nums[start] == nums[start + 1]) start++;
-                    while(start < end && nums[end] == nums[end - 1]) end--;
+                sum = nums[i] + nums[start] + nums[end];
+                if (sum == 0) {
+                    result.add(new ArrayList<> (Arrays.asList(nums[i], nums[start], nums[end])));
+                    while (start < end && nums[start] == nums[start+1]) start++;
+                    while (start<end && nums[end] == nums[end-1]) end--;
                 }
-                if (sum <0) start++;
+                if (sum < 0) start++;
                 else end--;
+
             }
+
         }
 
         return result;
