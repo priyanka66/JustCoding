@@ -6,31 +6,27 @@ import java.util.Arrays;
 public class NextPermutation {
 
     public void nextPermutation(int[] nums) {
-        if (nums.length == 0) return;
         int index = -1;
-        for (int i =nums.length-2;i>=0;i--) {
+        for (int i=nums.length-2;i>=0;i--) {
             if (nums[i] < nums[i+1]) {
-                index =  i;
+                index = i;
                 break;
             }
         }
-
         if (index == -1) {
             Arrays.sort(nums);
             return;
         }
 
-        for (int i=nums.length-1;i>=0;i--) {
+        for (int i=nums.length-1;i>=0; i--) {
             if (nums[i] > nums[index]) {
-                int x = nums[i];
-                nums[i] = nums[index];
-                nums[index] = x;
+                int temp = nums[index];
+                nums[index] = nums[i];
+                nums[i] = temp;
                 break;
             }
         }
-        Arrays.sort(nums, index+1,nums.length);
-        System.out.println(Arrays.toString(nums));
-
+        Arrays.sort(nums,index+1, nums.length);
     }
 
     public static void main(String[] args) {

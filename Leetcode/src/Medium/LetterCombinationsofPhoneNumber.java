@@ -40,21 +40,22 @@ public class LetterCombinationsofPhoneNumber {
     }
     private List<String> letterCombinationsV2 (String digits) {
         List<String> result = new ArrayList<>();
-        if (digits.length() == 0  || digits == null) return result;
-        letterCombinations(digits, 0, "", result);
+        if (digits.length() == 0 || digits == null) return result;
+        letterCombinationsV2(digits, result, 0,"");
         return result;
     }
 
-    void letterCombinations(String digits, int index, String temp, List<String> result)  {
-        if (index  == digits.length()) {
+    void letterCombinationsV2(String digits, List<String> result, int index, String temp) {
+        if (index == digits.length()) {
             result.add(temp);
             return;
         }
-        String str  = digitMap.get(digits.charAt(index));
+        String str = digitMap.get(digits.charAt(index));
         for (int i=0;i<str.length();i++) {
-            letterCombinations(digits, index+1, temp+str.charAt(i), result);
+            letterCombinationsV2(digits, result, index+1, temp+str.charAt(i));
         }
     }
+
 
     public static void main(String[] args) {
         LetterCombinationsofPhoneNumber l = new LetterCombinationsofPhoneNumber();

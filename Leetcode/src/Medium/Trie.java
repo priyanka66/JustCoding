@@ -1,61 +1,58 @@
 package Medium;
 
 class TrieNode {
-    TrieNode[] children  = new TrieNode[26];
-    boolean isLeaf;
+    TrieNode[] children = new TrieNode[26];
+    boolean isLeaf = false;
 
-    public TrieNode() {
-
+    TrieNode() {
     }
+
 }
 public class Trie {
     TrieNode root;
 
-    public Trie() {
+    Trie() {
         root = new TrieNode();
     }
 
-    void insert(String word)  {
-        insert(word.toCharArray(), 0, root);
+    public void insert(String word) {
+         insert(word.toCharArray(), 0, root);
     }
 
-    void insert(char[] word, int index, TrieNode root) {
-        if (index ==  word.length) {
-            root.isLeaf  = true;
+    public void insert(char[] word, int index, TrieNode root) {
+        if (index == word.length) {
+            root.isLeaf = true;
             return;
         }
         char c = word[index];
         if (root.children[c-'a'] == null) {
             root.children[c-'a'] = new TrieNode();
         }
-
-        insert(word, index+1, root.children[c-'a']);
+        root = root.children[c-'a'];
+        insert(word, index+1, root);
     }
 
-    boolean search(String word){
+    public boolean search(String word) {
         return search(word.toCharArray(), 0, root);
     }
 
-    boolean search(char[] word, int index, TrieNode root) {
-        if (index == word.length) {
-            return root.isLeaf;
-        }
-
+    public boolean search(char[] word, int index, TrieNode root) {
+        if (index == word.length) return root.isLeaf;
         char c = word[index];
-        return  root.children[c-'a']  != null  && search(word, index+1, root.children[c-'a']);
+
+        return root.children[c-'a'] != null && search(word, index+1, root.children[c-'a']);
     }
 
-    boolean startsWith(String word) {
+    public boolean startsWith(String word) {
         return startsWith(word.toCharArray(), 0, root);
     }
 
-    boolean  startsWith(char[] word, int index, TrieNode root) {
-        if (index == word.length) {
-            return true;
-        }
-
+    public boolean startsWith(char[] word, int index, TrieNode root) {
+        if (index == word.length) return true;
         char c = word[index];
-        return root.children[c-'a'] != null && startsWith(word, index+1, root.children[c-'a']);
+
+        return root.children[c-'a'] != null && search(word, index+1, root.children[c-'a']);
+
     }
     public static void main(String[] args) {
         Trie trie = new Trie();

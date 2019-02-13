@@ -7,16 +7,16 @@ import java.util.PriorityQueue;
 
 public class ReconstructItinerary {
     public List<String> findItinerary(String[][] tickets) {
-        List<String> result = new ArrayList<>();
-        if (tickets.length == 0) return result;
-        HashMap<String, PriorityQueue<String>> hmap = new HashMap<>();
-        for (String[] ticket:tickets) {
+        HashMap<String , PriorityQueue<String>> hmap = new HashMap<>();
+        for (String[] ticket : tickets) {
             hmap.putIfAbsent(ticket[0], new PriorityQueue<>((a,b)->a.compareTo(b)));
             hmap.get(ticket[0]).offer(ticket[1]);
         }
-        System.out.println(hmap);
+        List<String> result = new ArrayList<>();
         findItinerary("JFK", hmap, result);
+
         return result;
+
     }
 
     void findItinerary(String depart, HashMap<String, PriorityQueue<String>> hmap, List<String> result) {
@@ -24,7 +24,7 @@ public class ReconstructItinerary {
         while (next != null && !next.isEmpty()) {
             findItinerary(next.poll(), hmap, result);
         }
-        result.add(0,depart);
+        result.add(0, depart);
     }
 
     public static void main(String[] args) {

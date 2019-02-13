@@ -12,9 +12,8 @@ public class WordBreak {
         dp[0] = true;
         for (int i=1;i<=s.length();i++) {
             for (int j=0;j<i;j++) {
-                if(dp[j] && wordDict.contains(s.substring(j,i))) {
+                if (dp[j] && wordDict.contains(s.substring(j,i))) {
                     dp[i] = true;
-                    break;
                 }
             }
         }
@@ -24,10 +23,11 @@ public class WordBreak {
 
     public static void main(String[] args) {
         WordBreak w = new WordBreak();
-        String s ="applepenapple";
+        String s ="catsandog";
         List<String> wordDict = new ArrayList<>();
-        wordDict.add("apple");
-        wordDict.add("pen");
+        wordDict.add("cats");
+        wordDict.add("an");
+        wordDict.add("dog");
         System.out.println(w.wordBreak(s,wordDict));
 
     }

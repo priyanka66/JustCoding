@@ -24,7 +24,7 @@ public class DecodeWays {
     }
     public static void main(String[] args) {
         DecodeWays d = new DecodeWays();
-        String s = "77";
+        String s = "721";
         System.out.println(d.numDecodings(s));
     }
 }

@@ -13,16 +13,14 @@ public class ExclusiveTimeofFunctions {
         for (int i=0;i<logs.size();i++) {
             String[] cur = logs.get(i).split(":");
             if (cur[1].equals("start")) {
-                st.push(new int[]{(Integer.valueOf(cur[0])), Integer.valueOf(cur[2])});
+                st.push(new int[]{Integer.valueOf(cur[0]), Integer.valueOf(cur[2])});
             } else {
-                int[] pop = st.pop();
-                int runTime = Integer.parseInt(cur[2]) - pop[1] + 1;
-                time[pop[0]] += (runTime);
-                if (st.size() > 0) {
+                int[] top = st.pop();
+                int runTime = (Integer.valueOf(cur[2])-top[1]) +1;
+                time[top[0]] += runTime;
+                if (!st.isEmpty())
                     time[st.peek()[0]] -= runTime;
-                }
             }
-
         }
 
         return time;

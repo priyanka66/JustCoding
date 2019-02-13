@@ -18,6 +18,7 @@ public class DecodeString {
                     res.append(str);
                     num--;
                 }
+                System.out.println(s.substring(j+1,s.length()));
                 s = s.substring(0,k) + res.toString() + s.substring(j+1,s.length());
                 i = k;
             }
@@ -26,6 +27,6 @@ public class DecodeString {
     }
     public static void main(String[] args) {
         DecodeString d = new DecodeString();
-        System.out.println(d.decodeString("3[z]2[2[y]pq4[2[jk]e1[f]]]ef"));
+        System.out.println(d.decodeString("3[a]2[bc]"));
     }
 }

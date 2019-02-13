@@ -15,17 +15,18 @@ public class BinaryTreeRightSideView {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
-        rightSideView(root, result, 0);
+        rightSideView(root,0 , result);
         return result;
     }
 
-    void rightSideView(TreeNode root, List<Integer> result, int depth) {
+    public void rightSideView(TreeNode root, int depth, List<Integer> result) {
         if (root == null) return;
-        if (result.size() == depth) result.add(root.val);
-        rightSideView(root.right, result, depth+1);
-        rightSideView(root.left, result, depth+1);
+        if (result.size() == depth) {
+            result.add(root.val);
+        }
+        rightSideView(root.right, depth+1, result);
+        rightSideView(root.left, depth+1, result);
     }
-
     public static void main(String[] args) {
         BinaryTreeRightSideView t = new BinaryTreeRightSideView();
         TreeNode root = new TreeNode(1);

@@ -14,7 +14,7 @@ public class FirstLastPositionElementSortedArray {
             int mid = (start+end) /2;
             if (target == nums[mid]) {
                 int s = mid, e=mid;
-                while ((s-1)>=0 && nums[s-1] == target) {
+                while (s>0 && nums[s-1] == target) {
                     s--;
                 }
                 while ((e+1)<nums.length && nums[e+1] == target) {

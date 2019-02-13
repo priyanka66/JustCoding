@@ -60,20 +60,18 @@ public class TopKFrequentElements {
 
     private List<Integer> topKFrequentV3(int[] nums, int k) {
         List<Integer> result = new ArrayList<>();
-        Map<Integer, Integer>  hmap = new HashMap<>();
-        for(int num:nums) {
+        HashMap<Integer, Integer> hmap = new HashMap<>();
+        for (int num:nums) {
             hmap.put(num, hmap.getOrDefault(num,0)+1);
         }
-
-        PriorityQueue<Map.Entry<Integer, Integer>> queue = new PriorityQueue<>((a,b) -> b.getValue()-a.getValue());
-        for (Map.Entry<Integer, Integer> entry : hmap.entrySet()) {
-            queue.offer(entry);
+        PriorityQueue<Map.Entry<Integer, Integer>> queue = new PriorityQueue<>((a,b)->b.getValue()-a.getValue());
+        for (Map.Entry<Integer, Integer> val: hmap.entrySet() ) {
+            queue.offer(val);
         }
-
-        while (result.size() < k) {
+        while (k>0) {
             result.add(queue.poll().getKey());
+            k--;
         }
-
         return result;
     }
     public static void main(String[] args) {

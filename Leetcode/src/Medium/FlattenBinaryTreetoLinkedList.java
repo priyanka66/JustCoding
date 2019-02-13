@@ -15,17 +15,16 @@ public class FlattenBinaryTreetoLinkedList {
     }
 
     private TreeNode flattenTree(TreeNode root) {
-        TreeNode left = root.left, right= root.right;
-        if (left == null && right == null) return root;
-
-        if (left!=null) {
+        TreeNode left = root.left, right = root.right;
+        if (root.left == null && root.right == null) return root;
+        if (left != null) {
             TreeNode leaf = flattenTree(left);
             leaf.right = right;
             root.right = left;
             root.left = null;
             root = leaf;
         }
-        if (right != null) {
+        if (right!= null) {
             return flattenTree(right);
         } else {
             return root;

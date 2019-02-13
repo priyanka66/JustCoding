@@ -1,6 +1,5 @@
 package Easy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MergeSortedArray {
