@@ -1,21 +1,21 @@
-package Hard;
+ package Hard;
 
 import java.util.HashMap;
 
 public class LRUCache {
 
+
     public class DLL {
-        int key, value;
-        DLL prev, next;
+        int key,value;
+        DLL next, prev;
     }
 
     HashMap<Integer, DLL> hmap = new HashMap<>();
-
     DLL head, tail;
-    int curSize, maxSize;
+    int  curSize, maxSize;
 
-    public LRUCache(int capacity) {
-        maxSize = capacity;
+    LRUCache(int size) {
+        maxSize =  size;
         head = new DLL();
         tail = new DLL();
 
@@ -24,74 +24,64 @@ public class LRUCache {
 
         head.prev = null;
         tail.next = null;
-
     }
 
     public int get(int key) {
         DLL node = hmap.get(key);
-        if (node != null)  {
+        if (node != null) {
             moveToHead(node);
             return node.value;
-        } else {
-            return -1;
         }
-
+        return -1;
     }
-
-    public void put(int key, int value) {
+    public void put(int key, int val) {
         DLL node = hmap.get(key);
-        if (node == null)  {
+        if (node == null) {
             DLL newNode = new DLL();
-            newNode.key =  key;
-            newNode.value = value;
-
+            newNode.key = key;
+            newNode.value = val;
             hmap.put(key, newNode);
             addNode(newNode);
             curSize++;
-            if (curSize > maxSize)  {
+            if (curSize > maxSize) {
                 removeLRUNode();
             }
-
         } else {
-            node.value = value;
+            node.value = val;
             moveToHead(node);
         }
     }
 
-
-    void addNode(DLL node) {
+    public void addNode(DLL node) {
         node.prev = head;
         node.next = head.next;
 
         head.next.prev = node;
-        head.next = node;
+        head.next  = node;
     }
 
-    void removeLRUNode() {
+    public void removeLRUNode() {
         DLL tail = removeTail();
         hmap.remove(tail.key);
         curSize--;
-
     }
 
-    void moveToHead(DLL node) {
-        removeNode(node);
-        addNode(node);
-    }
-
-    void removeNode(DLL node) {
-        DLL prevNode = node.prev, nextNode = node.next;
-        prevNode.next = nextNode;
-        nextNode.prev = prevNode;
-
-    }
-
-    DLL removeTail() {
+    public DLL removeTail() {
         DLL node = tail.prev;
         removeNode(node);
         return node;
     }
 
+    public void removeNode(DLL node) {
+        DLL prevNode = node.prev, nextNode = node.next;
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+    }
+
+    public void moveToHead(DLL node) {
+        removeNode(node);
+        addNode(node);
+    }
     public static void main(String[] args) {
         LRUCache cache = new LRUCache(2);
 

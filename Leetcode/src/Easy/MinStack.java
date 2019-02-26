@@ -80,24 +80,28 @@ public class MinStack {
 
     public static void main(String[] args) {
         MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        System.out.println(minStack.getMin());  // --> Returns -3.
+//        minStack.push(-2);
+//        minStack.push(0);
+//        minStack.push(-3);
+//        System.out.println(minStack.getMin());  // --> Returns -3.
+//
+//        minStack.pop();
+//        System.out.println(minStack.top());     // --> Returns 0.
+//        System.out.println(minStack.getMin());   //--> Returns -2.
 
-        minStack.pop();
-        System.out.println(minStack.top());     // --> Returns 0.
-        System.out.println(minStack.getMin());   //--> Returns -2.
 
-
-        minStack.pushV2(-2);
+        minStack.pushV2(2);
+        minStack.pushV2(1);
         minStack.pushV2(0);
-        minStack.pushV2(-3);
+        minStack.pushV2(3);
         System.out.println(minStack.getMinV2());  // --> Returns -3.
 
         minStack.popV2();
         System.out.println(minStack.topV2());     // --> Returns 0.
         System.out.println(minStack.getMinV2());
+        minStack.popV2();
+        System.out.println(minStack.getMinV2());
+        minStack.popV2();
 
     }
 }

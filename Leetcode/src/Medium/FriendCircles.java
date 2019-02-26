@@ -6,8 +6,8 @@ public class FriendCircles {
         for (int i=0;i<M.length;i++) {
             for (int j=0;j<M[0].length;j++) {
                 if (M[i][j] == 1) {
-                    count ++ ;
                     dfs(M,i);
+                    count ++ ;
                 }
             }
         }
@@ -28,7 +28,8 @@ public class FriendCircles {
         }
     }
     public static void main(String[] args) {
-        int[][] M = {{1,0,0,1},
+        int[][] M = {
+                {1,0,0,1},
                 {0,1,1,0},
                 {0,1,1,1},
                 {1,0,1,1}};

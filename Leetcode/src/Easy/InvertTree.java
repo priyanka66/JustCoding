@@ -35,7 +35,6 @@ public class InvertTree {
 
             if (node.left != null) {
                 st.push(node.left);
-
             }
             if (node.right != null) {
                 st.push(node.right);

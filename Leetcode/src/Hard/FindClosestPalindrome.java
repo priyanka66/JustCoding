@@ -58,6 +58,6 @@ public class FindClosestPalindrome {
     }
     public static void main(String[] args) {
         FindClosestPalindrome p = new FindClosestPalindrome();
-        System.out.println(p.nearestPalindromic("88"));
+        System.out.println(p.nearestPalindromic("1221"));
     }
 }

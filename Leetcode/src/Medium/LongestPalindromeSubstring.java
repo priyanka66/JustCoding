@@ -24,9 +24,7 @@ public class LongestPalindromeSubstring {
                 }
             }
         }
-
         return s.substring(x,y+1);
-
     }
 
     public static void main(String[] args) {

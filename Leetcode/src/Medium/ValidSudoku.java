@@ -12,7 +12,8 @@ public class ValidSudoku {
                 char c = board[i][j];
                 if (c != '.') {
                     int val = 2 << (int) (c -'1');
-                    if ((checkIfValid(row, i, val)) && checkIfValid(col, j, val) && checkIfValid(squares, (3*(i/3) + (j/3)), val)) {
+                    if ((checkIfValid(row, i, val)) && checkIfValid(col, j, val) &&
+                            checkIfValid(squares, (3*(i/3) + (j/3)), val)) {
 
                     } else {
                         return false;

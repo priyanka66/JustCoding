@@ -24,11 +24,20 @@ public class CheckDuplicatesInArray {
         return false;
     }
 
+    public boolean containsDuplicateV3(int[]  nums) {
+        for (int i=0;i<nums.length;i++) {
+            if (nums[Math.abs(nums[i])] > 0)  nums[Math.abs(nums[i])] = - nums[Math.abs(nums[i])];
+            else return true;
+        }
+
+        return false;
+    }
     public static void main(String[] args) {
         CheckDuplicatesInArray c1 = new CheckDuplicatesInArray();
         int[] nums = {1,3,2,4,5, 2};
         if (c1.containsDuplicate(nums)) System.out.println("Yes");
         else System.out.println("NO");
         System.out.println(c1.containsDuplicateV2(nums));
+        System.out.println(c1.containsDuplicateV3(nums));
     }
 }

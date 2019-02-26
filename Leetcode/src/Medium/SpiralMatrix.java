@@ -16,43 +16,43 @@ public class SpiralMatrix {
         String dir = "TR";
         while (top<=bottom && left<=right) {
             // top to right
-            if (dir == "TR") {
-                System.out.println("TR");
+//            if (dir == "TR") {
+//                System.out.println("TR");
                 for (int i = top; i <= right; i++) {
                     result.add(matrix[top][i]);
                 }
                 top++;
                 // top to bottom
-                dir = "TB";
-            }
-            else if (dir == "TB") {
-                System.out.println("TB");
+//                dir = "TB";
+//            }
+//            else if (dir == "TB") {
+//                System.out.println("TB");
                 for (int i = top; i <= bottom; i++) {
                     result.add(matrix[i][right]);
                 }
                 right--;
                 // Right to left
-                dir = "RL";
-            }
-            else if (dir == "RL") {
-                System.out.println("RL");
+//                dir = "RL";
+//            }
+//            else if (dir == "RL") {
+//                System.out.println("RL");
                 for (int i=right; i>=left; i--) {
                     result.add(matrix[bottom][i]);
                 }
                 bottom--;
                 // bottom to top
-                dir="BT";
-            }
+//                dir="BT";
+//            }
 
-            else if (dir == "BT") {
-                System.out.println("BT");
+//            else if (dir == "BT") {
+//                System.out.println("BT");
                 for (int i=bottom;i>=top;i--) {
                     result.add(matrix[i][left]);
 
                 }
                 left++;
-                dir = "TR";
-            }
+//                dir = "TR";
+//            }
 
         }
 

@@ -24,7 +24,7 @@ public class SubarraySumEqualsK {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,1,1};
+        int[] nums = {1,1,0,2,1};
         int k=2;
         SubarraySumEqualsK s = new SubarraySumEqualsK();
         System.out.println(s.subarraySum(nums,k));

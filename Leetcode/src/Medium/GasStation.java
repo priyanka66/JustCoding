@@ -3,20 +3,21 @@ package Medium;
 public class GasStation {
 
     public int canCompleteCircuit(int[] gas, int[] cost) {
-        int gasSum=0, costSum=0;
-        for (int i=0;i<gas.length;i++) {
-            gasSum+=gas[i];
-            costSum+=cost[i];
+        int gasSum = 0, costSum = 0;
+        int[] need = new int[cost.length];
+        for (int x:gas) {
+            gasSum+=x;
         }
-        if (costSum > gasSum) return -1;
-        int sum = 0, start=0;
-        int[] need= new int[gas.length];
-
+        for (int x:cost) {
+            costSum+=x;
+        }
+        if  (costSum>gasSum) return -1;
+        int  start=0, sum=0;
         for (int i=gas.length-1;i>=0;i--) {
-            sum+=gas[i];
-            sum-=cost[i];
+            sum += gas[i];
+            sum -= cost[i];
             need[i] = sum;
-            if (need[i] > need[start]) start = i;
+            if (need[i] > need[start]) start=i;
         }
 
         return start;

@@ -38,6 +38,7 @@ public class ReverseWords3 {
 
         return result.toString();
     }
+
     public static void main(String[] args) {
         ReverseWords3 r = new ReverseWords3();
         String s = "Let's take LeetCode contest";

@@ -5,26 +5,21 @@ import java.util.Arrays;
 public class SingleNumber111 {
     public int[] singleNumber(int[] nums) {
         int[] result = new int[2];
-        int xor=0;
+        int num = nums[0];
+        for (int i=1;i<nums.length;i++) {
+            num ^= nums[i];
+        }
 
-        // Get xor of numbers that are not duplicate
-        for (int num:nums) xor ^= num;
-
-        //Get the rightmost bit in xor that is set to 1
-
-        int x = xor & ~(xor-1);
-
-        //Iterate through the list and check for number where this 'x' bit set or not and group them
-        for (int num:nums) {
-            if ((x & num) > 0) {
-                result[0] ^= num;
+        int xor = num & ~(num-1);
+        for (int n :nums) {
+            if ((xor & n) > 0) {
+                result[0] ^= n;
             } else {
-                result[1] ^= num;
+                result[1] ^= n;
             }
         }
 
         return result;
-
     }
 
     public static void main(String[] args) {

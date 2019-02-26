@@ -11,8 +11,8 @@ public class ReverseLetters {
         int i=0,j=S.length()-1;
         char[] s = S.toCharArray();
         while (i<j) {
-            while (i<=j && !isLetter(s[i])) i++;
-            while (i<=j && !isLetter(s[j])) j--;
+            while (i<=j && !Character.isLetter(s[i])) i++;
+            while (i<=j && !Character.isLetter(s[j])) j--;
             if (i<j) {
                 char x = s[i];
                 s[i] = s[j];
@@ -25,7 +25,7 @@ public class ReverseLetters {
         return String.valueOf(s);
     }
     public static void main(String[] args) {
-        String s = "7_28]";
+        String s = "ab_cd";
         ReverseLetters r = new ReverseLetters();
         System.out.println(r.reverseOnlyLetters(s));
     }

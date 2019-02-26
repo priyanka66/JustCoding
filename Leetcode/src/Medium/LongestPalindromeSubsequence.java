@@ -1,5 +1,7 @@
 package Medium;
 
+import java.util.Arrays;
+
 public class LongestPalindromeSubsequence {
     public int longestPalindromeSubseq(String s) {
         if (s.length() == 0 || s == null) return 0;
@@ -19,7 +21,7 @@ public class LongestPalindromeSubsequence {
                 }
             }
         }
-
+        System.out.println(Arrays.deepToString(palindrome));
         return palindrome[0][s.length()-1];
     }
 

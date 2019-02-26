@@ -27,12 +27,12 @@ public class SimplifyPath {
             result.append("/").append(s);
         }
 
-        return  result.toString().length() == 0 ? "" : result.toString();
+        return  result.toString().length() == 0 ? "/" : result.toString();
     }
 
     public static void main(String[] args) {
         SimplifyPath p = new SimplifyPath();
-        String path  ="/abc/...";
+        String path  ="/../";
         System.out.println(p.simplifyPath(path));
     }
 }

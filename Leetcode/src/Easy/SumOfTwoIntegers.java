@@ -15,7 +15,7 @@ public class SumOfTwoIntegers {
 
     public static void main(String[] args) {
         SumOfTwoIntegers s1 = new SumOfTwoIntegers();
-        int a = 3, b=1;
+        int a = 2, b=3;
         System.out.println(s1.getSum(a,b));
     }
 }

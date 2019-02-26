@@ -50,10 +50,10 @@ public class AddAndSearchWord {
     public static void main(String[] args) {
         AddAndSearchWord w = new AddAndSearchWord();
         w.addWord("bad");
-        w.addWord("dad");
+        w.addWord("dtad");
 
         System.out.println(w.root);
 
-        System.out.println(w.search(".ad"));
+        System.out.println(w.search("d.ad"));
     }
 }

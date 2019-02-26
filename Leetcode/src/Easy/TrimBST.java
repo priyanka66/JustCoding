@@ -42,8 +42,7 @@ public class TrimBST {
             while (node.left != null && node.left.val < L) {
                 node.left = node.left.right;
             }
-            node =
-                    node.left;
+            node = node.left;
         }
 
         node = root;

@@ -9,44 +9,48 @@ public class SortList {
             val=x;
         }
     }
+
     private ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode slow=head, fast=head, prev=null;
-        while (fast != null && fast.next != null) {
+        ListNode prev=null, slow=head, fast=head;
+        while (fast !=  null &&  fast.next != null) {
             prev = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
-
         prev.next = null;
         ListNode first = sortList(head);
-        ListNode second = sortList(slow);
-
+        ListNode  second = sortList(slow);
         return merge(first, second);
     }
 
     private ListNode merge(ListNode head1, ListNode head2) {
-        ListNode node = new ListNode(0), res=node;
-        while (head1 != null && head2 != null) {
-            if (head1.val <= head2.val) {
-                node.next = new ListNode(head1.val);
+        ListNode result = new ListNode(0), res  = result;
+        while (head1!=null && head2 != null) {
+            if (head1.val < head2.val) {
+                result.next  = new ListNode(head1.val);
                 head1 = head1.next;
             } else {
-                node.next = new ListNode(head2.val);
+                result.next  = new ListNode(head2.val);
                 head2 = head2.next;
             }
-            node = node.next;
+            result =  result.next;
         }
 
-        if (head1 == null) {
-            node.next = new ListNode(head2.val);
-        } else {
-            node.next = new ListNode(head1.val);
+        while (head1!=null) {
+            result.next  = new ListNode(head1.val);
+            head1 = head1.next;
+            result =  result.next;
+        }
+
+        while (head2!=null) {
+            result.next  = new ListNode(head2.val);
+            head2 = head2.next;
+            result =  result.next;
         }
 
         return res.next;
     }
-
 
     public static void main(String[] args) {
         SortList s = new SortList();
